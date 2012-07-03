@@ -1,0 +1,11 @@
+[Unit]
+Description= Clear Linux Project for Intel Architecture power weaks
+DefaultDependencies=no
+After=sysinit.target
+
+[Service]
+Type=oneshot
+ExecStart=/usr/bin/clr_power
+
+[Install]
+WantedBy=multi-user.target
