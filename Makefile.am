@@ -8,8 +8,6 @@ systemdsystemunitdir = @SYSTEMDSYSTEMUNITDIR@
 systemdsystemunit_DATA = \
         clr-power.service
         
-
-
 AM_CPPFLAGS = -Iinclude/
 
 noinst_HEADERS = include/clr_power.h
