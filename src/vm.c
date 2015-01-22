@@ -42,5 +42,9 @@ void do_vm_tweaks(void)
 
 
 	write_int_to_file("/sys/block/sda/queue/nr_requests", 4096);
-	write_int_to_file("/proc/sys/vm/mmap_min_addr", 64*1024);
+	write_int_to_file("/proc/sys/vm/mmap_min_addr", 32*1024); /* android can't cope with more than 32k */
+	write_int_to_file("/proc/sys/vm/extfrag_threshold", 100); /* oom less */
+	write_int_to_file("/sys/kernel/mm/ksm/sleep_millisecs", 10000);
+	write_int_to_file("/sys/kernel/mm/ksm/run", 1);
+	write_int_to_file("/sys/kernel/mm/ksm/pages_to_scan", 1000);
 }

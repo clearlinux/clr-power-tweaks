@@ -45,12 +45,20 @@ int main(int argc, char **argv)
 
 	/* Runtime PM for PCI */
 	do_pci_pm();
+	do_usb_pm();
 
 	/* turn off the NMI wathdog */
 	do_nmi_watchdog();
 
 	/* turn off Wake-on-Lan */
 	do_WOL();
+	
+	/* audio pm */
+	write_int_to_file("/sys/module/snd_hda_intel/parameters/power_save", 1);
 
+	/* P state stuff */
+	write_string_to_file("/sys/devices/system/cpu/cpu0/cpufreq/scaling_governor", "powersave");
+	/* we want at least half performance, this helps us in race-to-halt and to give us reasonable responses */
+	write_int_to_file("/sys/devices/system/cpu/intel_pstate/min_perf_pct", 50);
 	return EXIT_SUCCESS;
 }
