@@ -116,10 +116,12 @@ static struct pci_ids known_good[] =
 { 0x8086, 0x0f1c, NULL}, /* VLV PCU */
 { 0x8086, 0x0f31, NULL}, /* VLV PCI Generation 7 */
 { 0x8086, 0x0f35, NULL}, /* VLV USB xHCI Host Controller */
+{ 0x8086, 0x0a26, NULL}, /* Haswell-ULT Integrated Graphics Controller */
 /*
  * Devices
  */
 { 0x8086, 0x088e, NULL}, /* Centrino Advanced-N 6235 */
+{ 0x8086, 0x1559, NULL}, /* Intel tehernet I218-U */
 { 0x8086, 0x08b1, wilkins_peak_tweaks}, /* Wireless 7260 */
 { 0x168c, 0x0032, NULL}, /* AR9580 Wireless Adapter */
 { 0x14e4, 0x1639, NULL}, /* Broadcom BCM5709 Gigabit Ethernet */
