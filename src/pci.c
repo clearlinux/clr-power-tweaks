@@ -104,7 +104,6 @@ static struct pci_ids known_good[] =
 { 0x8086, 0x3411, NULL}, /* 7500 IO Hub PCI Express Root Port 10 */
 { 0x8086, 0x9c03, NULL}, /* LPT-LP SATA Contoller (AHCI */
 { 0x8086, 0x9c10, NULL}, /* LPT-LP PCI Express Root Port 1 */
-{ 0x8086, 0x9c14, lynx_point_tweaks}, /* LPT-LP PCI Express Root Port 3 */
 { 0x8086, 0x9c20, NULL}, /* LPT-LP HD Audio Controller */
 { 0x8086, 0x9c22, NULL}, /* LPT-LP SMBus Controller */
 { 0x8086, 0x9c26, NULL}, /* LPT-LP USB EHCI */
@@ -122,84 +121,19 @@ static struct pci_ids known_good[] =
  */
 { 0x8086, 0x088e, NULL}, /* Centrino Advanced-N 6235 */
 { 0x8086, 0x1559, NULL}, /* Intel tehernet I218-U */
-{ 0x8086, 0x08b1, wilkins_peak_tweaks}, /* Wireless 7260 */
 { 0x168c, 0x0032, NULL}, /* AR9580 Wireless Adapter */
 { 0x14e4, 0x1639, NULL}, /* Broadcom BCM5709 Gigabit Ethernet */
 
 {0, 0, NULL} };
 
-void enable_aspm(struct pci_dev *dev, int pos)
-{
-	int rc = 0;
-	u8 aspm = 0x0;
-	aspm = pci_read_byte(dev, pos);
-
-	if (aspm == 0x40) {
-		/*
-		 * 0x40 = no APSM
-		 * 0x41 = L0s only
-		 * 0x42 = L1
-		 * 0x43 = L0s and L1
-		 * Enable only L1 and not L0s for now
-		 */
-		aspm = 0x42;
-		rc = pci_write_byte(dev, pos, aspm);
-	}
-	return;
-}
-
-void lynx_point_tweaks(struct pci_ids *id, struct pci_access *pacc)
-{
-	struct pci_dev *rp = NULL;
-
-	for (rp = pacc->devices; rp; rp = rp->next) {
-		if (rp->vendor_id == id->vendor && 
-		    rp->device_id == id->device) {
-			/*
-			 * Byte 0x50 is the ASPM bit for Intel's
-			 * LynxPoint-LP root port .  
-			 */
-			enable_aspm(rp, 0x50);
-			break;
-		}
-	}
-
-	return;
-}
-
-
-void wilkins_peak_tweaks(struct pci_ids *id, struct pci_access *pacc)
-{
-	struct pci_dev *dev  = NULL;
-
-	for (dev = pacc->devices; dev; dev = dev->next) {
-		if (dev->vendor_id == id->vendor && 
-		    dev->device_id == id->device) {
-			/*
-			 * Byte 0x50 is the ASPM bit for Intel's
-			 * Wilkins Peak card.  
-			 */
-			enable_aspm(dev, 0x50);
-			break;
-		}
-	}
-
-	return;
-}
-
 void do_pci_pm(void)
 {
 	DIR *dir;
 	struct dirent *entry;
-	struct pci_access *pacc = NULL;
 
 	dir = opendir("/sys/bus/pci/devices/");
 	if (!dir)
 		return;
-
-	pacc = pci_alloc();
-	pci_init(pacc);
-	pci_scan_bus(pacc);
 
 	do {
 		FILE *file;
@@ -261,8 +195,6 @@ void do_pci_pm(void)
                        		 	assert(0);
 				write_string_to_file(filename, "auto");
 				free(filename);
-				if (known_good[i].tweaks_cb)
-					(*known_good[i].tweaks_cb)(&known_good[i], pacc);
 			}
 			i++;
 		}
@@ -271,6 +203,5 @@ void do_pci_pm(void)
 
 	} while (1);
 
-	pci_cleanup(pacc);
 	closedir(dir);
 }
