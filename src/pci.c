@@ -32,11 +32,6 @@
 #include <sys/types.h>
 #include <dirent.h>
 
-/*
- * From external/pciutils
- */
-#include <pci/pci.h>
-
 struct pci_ids {
 	int vendor;
 	int device;
