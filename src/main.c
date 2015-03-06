@@ -36,7 +36,12 @@
 int main(int argc, char **argv)
 {
 	/* SATA link power management */
-	do_sata_links();
+	/** FIXME: CLEAR-306: CLR 460+ not working properly on Avoton
+	 *
+	 * The root cause from the issue is in the following line.
+	 * Kernel Quad is working to add a patch to kernel.
+	 **/
+	//do_sata_links();
 
 	/* VM writeback timeout and dirty %ages */
 	do_vm_tweaks();
