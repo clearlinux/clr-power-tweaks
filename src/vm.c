@@ -35,16 +35,16 @@ void do_vm_tweaks(void)
 	/* synchronous dirty ratio --> 50% */
 	write_int_to_file("/proc/sys/vm/dirty_ratio", 50);
 	/* start IO at 30% not 10%... the FS/timeout based write generates better IO patterns */
-	write_int_to_file("/proc/sys/vm/dirty_background_ratio", 30);
+	write_int_to_file("/proc/sys/vm/dirty_background_ratio", 20);
 	/* 15 seconds before the VM starts writeback, allowing the FS to deal with this better */
 	write_int_to_file("/proc/sys/vm/dirty_writeback_centisecs", 1500);
-	write_int_to_file("/sys//kernel/mm/transparent_hugepage/khugepaged/scan_sleep_millisecs", 300000);
+	write_int_to_file("/sys//kernel/mm/transparent_hugepage/khugepaged/scan_sleep_millisecs", 30000);
 
 
 	write_int_to_file("/sys/block/sda/queue/nr_requests", 4096);
-	write_int_to_file("/proc/sys/vm/mmap_min_addr", 32*1024); /* android can't cope with more than 32k */
+	write_int_to_file("/proc/sys/vm/mmap_min_addr", 64*1024);
 	write_int_to_file("/proc/sys/vm/extfrag_threshold", 100); /* oom less */
-	write_int_to_file("/sys/kernel/mm/ksm/sleep_millisecs", 10000);
+	write_int_to_file("/sys/kernel/mm/ksm/sleep_millisecs", 1000);
 	write_int_to_file("/sys/kernel/mm/ksm/run", 1);
 	write_int_to_file("/sys/kernel/mm/ksm/pages_to_scan", 1000);
 }
