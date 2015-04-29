@@ -36,7 +36,7 @@
 int main(int argc, char **argv)
 {
 	/* SATA link power management */
-	do_sata_links();
+	//do_sata_links();
 
 	/* VM writeback timeout and dirty %ages */
 	do_vm_tweaks();
