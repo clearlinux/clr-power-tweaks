@@ -2,7 +2,7 @@
 Description= Clear Linux Project for Intel Architecture power weaks
 DefaultDependencies=no
 After=sysinit.target
-ConditionVirtualisation=vm
+ConditionVirtualization=vm
 
 [Service]
 Type=oneshot
