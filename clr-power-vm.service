@@ -2,11 +2,11 @@
 Description= Clear Linux Project for Intel Architecture power weaks
 DefaultDependencies=no
 After=sysinit.target
-ConditionVirtualisation=no
+ConditionVirtualisation=vm
 
 [Service]
 Type=oneshot
-ExecStart=/usr/bin/clr_power
+ExecStart=/usr/bin/clr_power --vm
 
 [Install]
 WantedBy=multi-user.target

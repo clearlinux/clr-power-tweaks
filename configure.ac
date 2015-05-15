@@ -2,7 +2,7 @@
 # Process this file with autoconf to produce a configure script.
 
 AC_PREREQ([2.66])
-AC_INIT(clr-power-tweaks, 8, arjan@linux.intel.com)
+AC_INIT(clr-power-tweaks, 21, arjan@linux.intel.com)
 AM_INIT_AUTOMAKE([foreign -Wall -W])
 AM_SILENT_RULES([yes])
 AC_PROG_CC
