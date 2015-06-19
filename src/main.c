@@ -94,6 +94,9 @@ int main(int argc, char **argv)
 	/* turn off Wake-on-Lan */
 	do_WOL();
 
+	/*Scheduler tweaks*/
+	do_sched_tweaks();
+
 	/* audio pm */
 	write_int_to_file("/sys/module/snd_hda_intel/parameters/power_save", 1);
 

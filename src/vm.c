@@ -38,6 +38,7 @@ void do_vm_tweaks(void)
 	write_int_to_file("/proc/sys/vm/dirty_background_ratio", 20);
 	/* 15 seconds before the VM starts writeback, allowing the FS to deal with this better */
 	write_int_to_file("/proc/sys/vm/dirty_writeback_centisecs", 1500);
+	write_int_to_file("/proc/sys/vm/swappiness", 10);
 	write_int_to_file("/sys//kernel/mm/transparent_hugepage/khugepaged/scan_sleep_millisecs", 30000);
 
 
