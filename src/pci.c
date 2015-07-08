@@ -35,12 +35,7 @@
 struct pci_ids {
 	int vendor;
 	int device;
-	void (*tweaks_cb)(struct pci_ids *id, struct pci_access *pacc);
 };
-
-void enable_aspm(struct pci_dev *dev, int pos);
-void lynx_point_tweaks(struct pci_ids *id, struct pci_access *pacc);
-void wilkins_peak_tweaks(struct pci_ids *id, struct pci_access *pacc);
 
 /*
  * This structure requires some maintenance on it.  Specifically the host
@@ -53,71 +48,71 @@ static struct pci_ids known_good[] =
 /*
  * Host Controllers 
  */
-{ 0x1b73, 0x1009, NULL}, /* Fresco Logic xHCI Controller */
-{ 0x8086, 0x0104, NULL}, /* 2nd Gen Core DRAM Controller */
-{ 0x8086, 0x0116, NULL}, /* 2nd Gen Core Integrated Graphics Processor */
-{ 0x8086, 0x0153, NULL}, /* 3rd Gen Core Thermal Subsystem */
-{ 0x8086, 0x0154, NULL}, /* 3rd Gen Core DRAM Controller */
-{ 0x8086, 0x0166, NULL}, /* 3rd Gen Core Graphics Controller */
-{ 0x8086, 0x0a04, NULL}, /* HSW-U DRAM Controller */
-{ 0x8086, 0x0a0c, NULL}, /* HSW-U HD Audio Controller */
-{ 0x8086, 0x1c03, NULL}, /* 6Series SATA AHCI Controller */
-{ 0x8086, 0x1c10, NULL}, /* 6Series PCI Express Root Port 1 */
-{ 0x8086, 0x1c12, NULL}, /* 6Series PCI Express Root Port 2 */
-{ 0x8086, 0x1c16, NULL}, /* 6Series PCI Express Root Port 4 */
-{ 0x8086, 0x1c20, NULL}, /* 6Series HD Audio Controller */
-{ 0x8086, 0x1c22, NULL}, /* 6Series SMBus Controller */
-{ 0x8086, 0x1c26, NULL}, /* 6Series USB Enhanced Host Controller 1 */
-{ 0x8086, 0x1c3a, NULL}, /* 6Series MEI Controller */
-{ 0x8086, 0x1c4d, NULL}, /* QS67 Express LPC Controller */
-{ 0x8086, 0x1e03, NULL}, /* 7Series SATA Controller AHCI */
-{ 0x8086, 0x1e10, NULL}, /* 7Series PCI Express Root Port 1 */
-{ 0x8086, 0x1e12, NULL}, /* 7Series PCI Express Root Port 2 */
-{ 0x8086, 0x1e20, NULL}, /* 7Series HD Audio Controller */
-{ 0x8086, 0x1e22, NULL}, /* 7Series SMBus Controller */
-{ 0x8086, 0x1e24, NULL}, /* 7Series Thermal Management Controller */
-{ 0x8086, 0x1e26, NULL}, /* 7Series USB Enhanced Host Controller 1 */
-{ 0x8086, 0x1e2d, NULL}, /* 7Series USB Enhanced Host Controller 2 */
-{ 0x8086, 0x1e3a, NULL}, /* 7Series MEI Controller */
-{ 0x8086, 0x1e59, NULL}, /* HM76 Express Chipset LPC Controller */
-{ 0x8086, 0x2921, NULL}, /* ICH9 SATA Controller IDE */
-{ 0x8086, 0x2934, NULL}, /* ICH9 USB UCHI Controller 1 */
-{ 0x8086, 0x2935, NULL}, /* ICH9 USB UCHI Controller 2 */
-{ 0x8086, 0x2936, NULL}, /* ICH9 USB UHCI Controller 3 */
-{ 0x8086, 0x2937, NULL}, /* ICH9 USB UCHI Controller 4 */
-{ 0x8086, 0x2938, NULL}, /* ICH9 USB UHCI Controller 5 */
-{ 0x8086, 0x2939, NULL}, /* ICH9 USB UHCI Controller 6 */
-{ 0x8086, 0x293a, NULL}, /* ICH9 USB2 ECHI Controller */
-{ 0x8086, 0x293c, NULL}, /* ICH9 HD Audio Controller */
-{ 0x8086, 0x3406, NULL}, /* 5520 IO Hub to ESI Port */
-{ 0x8086, 0x3408, NULL}, /* 5520 IO Hub PCI Express Root Port 1 */
-{ 0x8086, 0x340a, NULL}, /* 5520 IO Hub PCI Express Root Port 3 */
-{ 0x8086, 0x340b, NULL}, /* 5520 IO Hub PCI Express Root Port 4 */
-{ 0x8086, 0x340c, NULL}, /* 5520 IO Hub PCI Express Root Port 5 */
-{ 0x8086, 0x340e, NULL}, /* 5520 IO Hub PCI Express Root Port 7 */
-{ 0x8086, 0x3410, NULL}, /* 7500 IO Hub PCI Express Root Port 9 */
-{ 0x8086, 0x3411, NULL}, /* 7500 IO Hub PCI Express Root Port 10 */
-{ 0x8086, 0x9c03, NULL}, /* LPT-LP SATA Contoller (AHCI */
-{ 0x8086, 0x9c10, NULL}, /* LPT-LP PCI Express Root Port 1 */
-{ 0x8086, 0x9c20, NULL}, /* LPT-LP HD Audio Controller */
-{ 0x8086, 0x9c22, NULL}, /* LPT-LP SMBus Controller */
-{ 0x8086, 0x9c26, NULL}, /* LPT-LP USB EHCI */
-{ 0x8086, 0x9c31, NULL}, /* LPT-LP USB xHCI HC */
-{ 0x8086, 0x9c3a, NULL}, /* LPT-LP HECI 0 */
-{ 0x8086, 0x9c43, NULL}, /* LPC Controller */
-{ 0x8086, 0x0f00, NULL}, /* VLV SSA-CUnit */
-{ 0x8086, 0x0f18, NULL}, /* VLV SEC */
-{ 0x8086, 0x0f1c, NULL}, /* VLV PCU */
-{ 0x8086, 0x0f31, NULL}, /* VLV PCI Generation 7 */
-{ 0x8086, 0x0f35, NULL}, /* VLV USB xHCI Host Controller */
-{ 0x8086, 0x0a26, NULL}, /* Haswell-ULT Integrated Graphics Controller */
+{ 0x1b73, 0x1009}, /* Fresco Logic xHCI Controller */
+{ 0x8086, 0x0104}, /* 2nd Gen Core DRAM Controller */
+{ 0x8086, 0x0116}, /* 2nd Gen Core Integrated Graphics Processor */
+{ 0x8086, 0x0153}, /* 3rd Gen Core Thermal Subsystem */
+{ 0x8086, 0x0154}, /* 3rd Gen Core DRAM Controller */
+{ 0x8086, 0x0166}, /* 3rd Gen Core Graphics Controller */
+{ 0x8086, 0x0a04}, /* HSW-U DRAM Controller */
+{ 0x8086, 0x0a0c}, /* HSW-U HD Audio Controller */
+{ 0x8086, 0x1c03}, /* 6Series SATA AHCI Controller */
+{ 0x8086, 0x1c10}, /* 6Series PCI Express Root Port 1 */
+{ 0x8086, 0x1c12}, /* 6Series PCI Express Root Port 2 */
+{ 0x8086, 0x1c16}, /* 6Series PCI Express Root Port 4 */
+{ 0x8086, 0x1c20}, /* 6Series HD Audio Controller */
+{ 0x8086, 0x1c22}, /* 6Series SMBus Controller */
+{ 0x8086, 0x1c26}, /* 6Series USB Enhanced Host Controller 1 */
+{ 0x8086, 0x1c3a}, /* 6Series MEI Controller */
+{ 0x8086, 0x1c4d}, /* QS67 Express LPC Controller */
+{ 0x8086, 0x1e03}, /* 7Series SATA Controller AHCI */
+{ 0x8086, 0x1e10}, /* 7Series PCI Express Root Port 1 */
+{ 0x8086, 0x1e12}, /* 7Series PCI Express Root Port 2 */
+{ 0x8086, 0x1e20}, /* 7Series HD Audio Controller */
+{ 0x8086, 0x1e22}, /* 7Series SMBus Controller */
+{ 0x8086, 0x1e24}, /* 7Series Thermal Management Controller */
+{ 0x8086, 0x1e26}, /* 7Series USB Enhanced Host Controller 1 */
+{ 0x8086, 0x1e2d}, /* 7Series USB Enhanced Host Controller 2 */
+{ 0x8086, 0x1e3a}, /* 7Series MEI Controller */
+{ 0x8086, 0x1e59}, /* HM76 Express Chipset LPC Controller */
+{ 0x8086, 0x2921}, /* ICH9 SATA Controller IDE */
+{ 0x8086, 0x2934}, /* ICH9 USB UCHI Controller 1 */
+{ 0x8086, 0x2935}, /* ICH9 USB UCHI Controller 2 */
+{ 0x8086, 0x2936}, /* ICH9 USB UHCI Controller 3 */
+{ 0x8086, 0x2937}, /* ICH9 USB UCHI Controller 4 */
+{ 0x8086, 0x2938}, /* ICH9 USB UHCI Controller 5 */
+{ 0x8086, 0x2939}, /* ICH9 USB UHCI Controller 6 */
+{ 0x8086, 0x293a}, /* ICH9 USB2 ECHI Controller */
+{ 0x8086, 0x293c}, /* ICH9 HD Audio Controller */
+{ 0x8086, 0x3406}, /* 5520 IO Hub to ESI Port */
+{ 0x8086, 0x3408}, /* 5520 IO Hub PCI Express Root Port 1 */
+{ 0x8086, 0x340a}, /* 5520 IO Hub PCI Express Root Port 3 */
+{ 0x8086, 0x340b}, /* 5520 IO Hub PCI Express Root Port 4 */
+{ 0x8086, 0x340c}, /* 5520 IO Hub PCI Express Root Port 5 */
+{ 0x8086, 0x340e}, /* 5520 IO Hub PCI Express Root Port 7 */
+{ 0x8086, 0x3410}, /* 7500 IO Hub PCI Express Root Port 9 */
+{ 0x8086, 0x3411}, /* 7500 IO Hub PCI Express Root Port 10 */
+{ 0x8086, 0x9c03}, /* LPT-LP SATA Contoller (AHCI */
+{ 0x8086, 0x9c10}, /* LPT-LP PCI Express Root Port 1 */
+{ 0x8086, 0x9c20}, /* LPT-LP HD Audio Controller */
+{ 0x8086, 0x9c22}, /* LPT-LP SMBus Controller */
+{ 0x8086, 0x9c26}, /* LPT-LP USB EHCI */
+{ 0x8086, 0x9c31}, /* LPT-LP USB xHCI HC */
+{ 0x8086, 0x9c3a}, /* LPT-LP HECI 0 */
+{ 0x8086, 0x9c43}, /* LPC Controller */
+{ 0x8086, 0x0f00}, /* VLV SSA-CUnit */
+{ 0x8086, 0x0f18}, /* VLV SEC */
+{ 0x8086, 0x0f1c}, /* VLV PCU */
+{ 0x8086, 0x0f31}, /* VLV PCI Generation 7 */
+{ 0x8086, 0x0f35}, /* VLV USB xHCI Host Controller */
+{ 0x8086, 0x0a26}, /* Haswell-ULT Integrated Graphics Controller */
 /*
  * Devices
  */
-{ 0x8086, 0x088e, NULL}, /* Centrino Advanced-N 6235 */
-{ 0x8086, 0x1559, NULL}, /* Intel tehernet I218-U */
-{ 0x168c, 0x0032, NULL}, /* AR9580 Wireless Adapter */
-{ 0x14e4, 0x1639, NULL}, /* Broadcom BCM5709 Gigabit Ethernet */
+{ 0x8086, 0x088e}, /* Centrino Advanced-N 6235 */
+{ 0x8086, 0x1559}, /* Intel tehernet I218-U */
+{ 0x168c, 0x0032}, /* AR9580 Wireless Adapter */
+{ 0x14e4, 0x1639}, /* Broadcom BCM5709 Gigabit Ethernet */
 
 {0, 0, NULL} };
 
