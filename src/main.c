@@ -41,46 +41,11 @@ const char *argp_program_version = "Clear Linux Project for Intel Architecture P
 
 const char doc[] = "Power Tweaks -- adjusts runtime kernel options for optimal power and performance";
 
-#define OPT_VM 1 // vm key
-
-static struct argp_option options[] = {
-	{"vm", OPT_VM, 0, 0, "Execute tweaks for Virtual Machines only"},
-	{ 0 }
-};
-
-struct arguments {
-	int vm;
-};
-
-static error_t parse_opt (int key, char *arg, struct argp_state *state) {
-	struct arguments *arguments = state->input;
-	switch (key) {
-	case OPT_VM:
-		arguments->vm = 1;
-		break;
-	default:
-		return ARGP_ERR_UNKNOWN;
-	}
-	return 0;
-}
-
-static struct argp argp = { options, parse_opt, 0, doc };
+static struct argp argp = { NULL, NULL, 0, doc };
 
 int main(int argc, char **argv)
 {
-	struct arguments arguments;
-	arguments.vm = 0;
-
-	argp_parse (&argp, argc, argv, 0, 0, &arguments);
-
-	/* VM writeback timeout and dirty %ages */
-	do_vm_tweaks();
-
-	if (arguments.vm)
-		return EXIT_SUCCESS;
-
-	/* SATA link power management */
-	//do_sata_links();
+	argp_parse (&argp, argc, argv, 0, 0, NULL);
 
 	/* USB autosuspend for non-HID */
 
@@ -88,22 +53,8 @@ int main(int argc, char **argv)
 	do_pci_pm();
 	do_usb_pm();
 
-	/* turn off the NMI wathdog */
-	do_nmi_watchdog();
-
 	/* turn off Wake-on-Lan */
 	do_WOL();
-
-	/*Scheduler tweaks*/
-	do_sched_tweaks();
-
-	/* audio pm */
-	write_int_to_file("/sys/module/snd_hda_intel/parameters/power_save", 1);
-
-	/* P state stuff */
-	write_string_to_file("/sys/devices/system/cpu/cpu0/cpufreq/scaling_governor", "performance");
-	/* we want at least half performance, this helps us in race-to-halt and to give us reasonable responses */
-	write_int_to_file("/sys/devices/system/cpu/intel_pstate/min_perf_pct", 50);
 
 	return EXIT_SUCCESS;
 }

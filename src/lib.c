@@ -30,20 +30,6 @@
 
 #include <clr_power.h>
 
-
-void write_int_to_file(char *filename, int value)
-{
-	FILE *file;
-	file = fopen(filename, "w");
-	if (!file) {
-		printf("Cannot write %i to %s: %s\n", value, filename, strerror(errno));
-		return;
-	}
-	fprintf(file, "%i\n", value);
-	fclose(file);
-}
-
-
 void write_string_to_file(char *filename, char *string)
 {
 	FILE *file;

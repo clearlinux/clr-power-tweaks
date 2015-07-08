@@ -1,14 +1,12 @@
-EXTRA_DIST = COPYING clr-power.service clr-power-vm.service
-
 bin_PROGRAMS = clr_power
-clr_power_SOURCES = src/main.c src/lib.c src/vm.c src/watchdog.c src/sata.c src/pci.c src/ethernet.c src/usb.c src/sched.c
+clr_power_SOURCES = src/main.c src/lib.c src/pci.c src/ethernet.c src/usb.c
 
+systemdsystemunit_DATA = clr-power.service
 
-systemdsystemunitdir = @SYSTEMDSYSTEMUNITDIR@
-systemdsystemunit_DATA = \
-        clr-power.service \
-        clr-power-vm.service
+tmpfiles_DATA = clr-power-tweaks.conf
 
 AM_CPPFLAGS = -I$(top_srcdir)/include/
 
 noinst_HEADERS = include/clr_power.h
+
+EXTRA_DIST = COPYING $(systemdsystemunit_DATA) $(tmpfiles_DATA)
