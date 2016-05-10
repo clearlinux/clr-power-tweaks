@@ -2,7 +2,6 @@
 Description=Clear Linux Project for Intel Architecture power tweaks
 DefaultDependencies=no
 After=sysinit.target
-ConditionVirtualization=no
 
 [Service]
 Type=oneshot
