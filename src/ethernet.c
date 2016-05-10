@@ -66,15 +66,51 @@ static void turn_off_wol(char *iface)
 	ifr.ifr_data = (caddr_t)&wol;
 	ioctl(sock, SIOCETHTOOL, &ifr);
 
-        close(sock);
 
         if (wol.wolopts) {
 	        wol.cmd = ETHTOOL_SWOL;
 	        wol.wolopts = 0;
 	        ioctl(sock, SIOCETHTOOL, &ifr);
 	}
+        close(sock);
 }
 
+static void maximize_queues(char *iface)
+{
+	int sock;
+	struct ifreq ifr;
+	int ret;
+	struct ethtool_channels echannels;
+
+
+	memset(&ifr, 0, sizeof(struct ifreq));
+
+	sock = socket(AF_INET, SOCK_DGRAM, 0);
+	if (sock<0)
+		return;
+
+	strcpy(ifr.ifr_name, iface);
+
+	/* Check if the interface is up */
+	ret = ioctl(sock, SIOCGIFFLAGS, &ifr);
+	if (ret<0) {
+		close(sock);
+                return;
+	}
+
+	memset(&echannels, 0, sizeof(echannels));
+
+	echannels.cmd = ETHTOOL_GCHANNELS;
+	ifr.ifr_data = (caddr_t)&echannels;
+	ret = ioctl(sock, SIOCETHTOOL, &ifr);
+	
+        if (ret == 0 && echannels.combined_count != echannels.max_combined && echannels.max_combined > 0) {
+        	echannels.cmd = ETHTOOL_SCHANNELS;
+        	echannels.combined_count = echannels.max_combined;
+	        ioctl(sock, SIOCETHTOOL, &ifr);
+	}
+        close(sock);
+}
 
 void do_WOL(void)
 {
@@ -85,13 +121,6 @@ void do_WOL(void)
 	if (!dir)
 		return;
 	do {
-		FILE *file;
-		char *filename;
-		char *line;
-		size_t size;
-		int vendor, device;
-		int i;
-
 		entry = readdir(dir);
 		if (!entry)
 			break;
@@ -103,6 +132,7 @@ void do_WOL(void)
 			continue;
 
 		turn_off_wol(entry->d_name);
+		maximize_queues(entry->d_name);
 		
 	} while (1);
 
