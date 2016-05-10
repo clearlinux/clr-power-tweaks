@@ -56,10 +56,19 @@ static struct pci_ids known_good[] =
 { 0x8086, 0x0166}, /* 3rd Gen Core Graphics Controller */
 { 0x8086, 0x0a04}, /* HSW-U DRAM Controller */
 { 0x8086, 0x0a0c}, /* HSW-U HD Audio Controller */
+{ 0x8086, 0x0a26}, /* Haswell-ULT Integrated Graphics Controller */
+{ 0x8086, 0x0f00}, /* VLV SSA-CUnit */
+{ 0x8086, 0x0f18}, /* VLV SEC */
+{ 0x8086, 0x0f1c}, /* VLV PCU */
+{ 0x8086, 0x0f31}, /* VLV PCI Generation 7 */
+{ 0x8086, 0x0f35}, /* VLV USB xHCI Host Controller */
+{ 0x8086, 0x1570}, /* Intel Corporation Ethernet Connection I219-V */
 { 0x8086, 0x15a3}, /* Ethernet controller: Intel Corporation Ethernet Connection (3) I218-V */
 { 0x8086, 0x1604}, /* Host bridge: Intel Corporation Broadwell-U Host Bridge -OPI */
 { 0x8086, 0x160c}, /* Audio device: Intel Corporation Broadwell-U Audio Controller */
 { 0x8086, 0x162b}, /* VGA compatible controller: Intel Corporation Broadwell-U Integrated Graphics */
+{ 0x8086, 0x1904}, /* Intel Corporation Skylake Host Bridge/DRAM Registers */
+{ 0x8086, 0x1926}, /* Intel Corporation Skylake Integrated Graphics */
 { 0x8086, 0x1c03}, /* 6Series SATA AHCI Controller */
 { 0x8086, 0x1c10}, /* 6Series PCI Express Root Port 1 */
 { 0x8086, 0x1c12}, /* 6Series PCI Express Root Port 2 */
@@ -79,6 +88,7 @@ static struct pci_ids known_good[] =
 { 0x8086, 0x1e2d}, /* 7Series USB Enhanced Host Controller 2 */
 { 0x8086, 0x1e3a}, /* 7Series MEI Controller */
 { 0x8086, 0x1e59}, /* HM76 Express Chipset LPC Controller */
+{ 0x8086, 0x24f3}, /* Intel Corporation Wireless 8260 */
 { 0x8086, 0x2921}, /* ICH9 SATA Controller IDE */
 { 0x8086, 0x2934}, /* ICH9 USB UCHI Controller 1 */
 { 0x8086, 0x2935}, /* ICH9 USB UCHI Controller 2 */
@@ -105,20 +115,26 @@ static struct pci_ids known_good[] =
 { 0x8086, 0x9c3a}, /* LPT-LP HECI 0 */
 { 0x8086, 0x9c43}, /* LPC Controller */
 { 0x8086, 0x9c5a}, /* Network controller: Intel Corporation Wireless 7265 (rev 59) */
+{ 0x8086, 0x9c83}, /* SATA controller: Intel Corporation Wildcat Point-LP SATA Controller {AHCI Mode}  */
 { 0x8086, 0x9c90}, /* PCI bridge: Intel Corporation Wildcat Point-LP PCI Express Root Port #1 */
 { 0x8086, 0x9c96}, /* PCI bridge: Intel Corporation Wildcat Point-LP PCI Express Root Port #4 */
-{ 0x8086, 0x9c83}, /* SATA controller: Intel Corporation Wildcat Point-LP SATA Controller [AHCI Mode]  */
 { 0x8086, 0x9ca0}, /* Audio device: Intel Corporation Wildcat Point-LP High Definition Audio Controller */
 { 0x8086, 0x9ca2}, /* SMBus: Intel Corporation Wildcat Point-LP SMBus Controller (rev 03) */
 { 0x8086, 0x9ca6}, /* USB controller: Intel Corporation Wildcat Point-LP USB EHCI Controller */
 { 0x8086, 0x9cba}, /* Communication controller: Intel Corporation Wildcat Point-LP MEI Controller #1 */
 { 0x8086, 0x9cc3}, /* ISA bridge: Intel Corporation Wildcat Point-LP LPC Controller */
-{ 0x8086, 0x0f00}, /* VLV SSA-CUnit */
-{ 0x8086, 0x0f18}, /* VLV SEC */
-{ 0x8086, 0x0f1c}, /* VLV PCU */
-{ 0x8086, 0x0f31}, /* VLV PCI Generation 7 */
-{ 0x8086, 0x0f35}, /* VLV USB xHCI Host Controller */
-{ 0x8086, 0x0a26}, /* Haswell-ULT Integrated Graphics Controller */
+{ 0x8086, 0x9d03}, /* Intel Corporation Sunrise Point-LP SATA Controller {AHCI mode} */
+{ 0x8086, 0x9d14}, /* Intel Corporation Sunrise Point-LP PCI Express Root Port #5 */
+{ 0x8086, 0x9d21}, /* Intel Corporation Sunrise Point-LP PMC */
+{ 0x8086, 0x9d23}, /* Intel Corporation Sunrise Point-LP SMBus */
+{ 0x8086, 0x9d27}, /* Intel Corporation Sunrise Point-LP Serial IO UART Controller #0 */
+{ 0x8086, 0x9d2d}, /* Intel Corporation Sunrise Point-LP Secure Digital IO Controller */
+{ 0x8086, 0x9d2f}, /* Intel Corporation Sunrise Point-LP USB 3.0 xHCI Controller */
+{ 0x8086, 0x9d31}, /* Intel Corporation Sunrise Point-LP Thermal subsystem */
+{ 0x8086, 0x9d3a}, /* Intel Corporation Sunrise Point-LP CSME HECI #1 */
+{ 0x8086, 0x9d48}, /* Intel Corporation Sunrise Point-LP LPC Controller */
+{ 0x8086, 0x9d70}, /* Intel Corporation Sunrise Point-LP HD Audio */
+
 /*
  * Devices
  */
