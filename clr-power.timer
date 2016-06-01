@@ -1,0 +1,10 @@
+[Unit]
+Description=Timer to start clr-power service
+
+[Timer]
+OnBootSec=30s
+
+[Install]
+Also=clr-power.service
+WantedBy=multi-user.target
+
