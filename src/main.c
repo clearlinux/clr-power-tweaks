@@ -86,13 +86,15 @@ int main(int argc, char **argv)
 	/* USB autosuspend for non-HID */
 
 	/* Runtime PM for PCI */
-	do_pci_pm();
 	do_usb_pm();
 
 	/* turn off Wake-on-Lan */
 	do_WOL();
 	for (i = 0; i < sysconf(_SC_NPROCESSORS_ONLN); i++)
 		write_msr(i, 0, MSR_IA32_ENERGY_PERF_BIAS);
+
+	daemon(0,0);
+	do_pci_pm();
 
 	return EXIT_SUCCESS;
 }
