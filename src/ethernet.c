@@ -131,7 +131,7 @@ void do_WOL(void)
 		if (strcmp(entry->d_name, "lo") == 0)
 			continue;
 
-		turn_off_wol(entry->d_name);
+//		turn_off_wol(entry->d_name);
 		maximize_queues(entry->d_name);
 		
 	} while (1);
