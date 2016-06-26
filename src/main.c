@@ -96,6 +96,7 @@ int main(int argc, char **argv)
 		write_msr(i, 0, MSR_IA32_ENERGY_PERF_BIAS);
 
 	do_pci_pm();
+	do_gfx_pm();
 	write_string_to_file("/sys/module/snd_hda_intel/parameters/power_save", "1");
 
 	return EXIT_SUCCESS;
