@@ -82,6 +82,8 @@ int main(int argc, char **argv)
 {
 	int i;
 	argp_parse (&argp, argc, argv, 0, 0, NULL);
+	
+	sleep(1);
 
 	/* USB autosuspend for non-HID */
 
@@ -93,7 +95,6 @@ int main(int argc, char **argv)
 	for (i = 0; i < sysconf(_SC_NPROCESSORS_ONLN); i++)
 		write_msr(i, 0, MSR_IA32_ENERGY_PERF_BIAS);
 
-	daemon(0,0);
 	do_pci_pm();
 
 	return EXIT_SUCCESS;
