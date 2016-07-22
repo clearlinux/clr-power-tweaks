@@ -92,9 +92,11 @@ int main(int argc, char **argv)
 
 	/* turn off Wake-on-Lan */
 	do_WOL();
+
+/*	
 	for (i = 0; i < sysconf(_SC_NPROCESSORS_ONLN); i++)
 		write_msr(i, 0, MSR_IA32_ENERGY_PERF_BIAS);
-
+*/
 	do_pci_pm();
 	do_gfx_pm();
 	write_string_to_file("/sys/module/snd_hda_intel/parameters/power_save", "1");
