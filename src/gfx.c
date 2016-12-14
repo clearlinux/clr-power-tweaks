@@ -50,9 +50,7 @@ void do_gfx_pm(void)
 	if (i == 0)
 		return;
 	
-	i = i * 4 / 3;
-	i = i / 100;
-	i = i * 50;
+	i = i - 150;
 	file = fopen("/sys/kernel/debug/dri/0/i915_min_freq", "w");
 	if (!file)
 		return;
