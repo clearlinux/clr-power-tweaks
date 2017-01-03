@@ -68,6 +68,7 @@ static struct pci_ids known_good[] =
 { 0x8086, 0x160c}, /* Audio device: Intel Corporation Broadwell-U Audio Controller */
 { 0x8086, 0x162b}, /* VGA compatible controller: Intel Corporation Broadwell-U Integrated Graphics */
 { 0x8086, 0x1904}, /* Intel Corporation Skylake Host Bridge/DRAM Registers */
+{ 0x8086, 0x1911}, /* System peripheral: Intel Corporation Skylake Gaussian Mixture Model */
 { 0x8086, 0x1926}, /* Intel Corporation Skylake Integrated Graphics */
 { 0x8086, 0x1c03}, /* 6Series SATA AHCI Controller */
 { 0x8086, 0x1c10}, /* 6Series PCI Express Root Port 1 */
@@ -134,7 +135,20 @@ static struct pci_ids known_good[] =
 { 0x8086, 0x9d3a}, /* Intel Corporation Sunrise Point-LP CSME HECI #1 */
 { 0x8086, 0x9d48}, /* Intel Corporation Sunrise Point-LP LPC Controller */
 { 0x8086, 0x9d70}, /* Intel Corporation Sunrise Point-LP HD Audio */
-
+{ 0x8086, 0xa13a}, /* Communication controller: Intel Corporation Sunrise Point-H CSME HECI #1  */
+{ 0x8086, 0xa110}, /* PCI bridge: Intel Corporation Sunrise Point-H PCI Express Root Port #1 */
+{ 0x8086, 0xa111}, /* PCI bridge: Intel Corporation Sunrise Point-H PCI Express Root Port #1 */
+{ 0x8086, 0xa112}, /* PCI bridge: Intel Corporation Sunrise Point-H PCI Express Root Port #1 */
+{ 0x8086, 0xa114}, /* PCI bridge: Intel Corporation Sunrise Point-H PCI Express Root Port #1 */
+{ 0x8086, 0xa118}, /* PCI bridge: Intel Corporation Sunrise Point-H PCI Express Root Port #1 */
+{ 0x8086, 0xa14e}, /* ISA bridge: Intel Corporation Sunrise Point-H LPC Controller  */
+{ 0x8086, 0xa121}, /* Memory controller: Intel Corporation Sunrise Point-H PMC */
+{ 0x8086, 0xa170}, /* Audio device: Intel Corporation Sunrise Point-H HD Audio */
+{ 0x8086, 0xa123}, /* SMBus: Intel Corporation Sunrise Point-H SMBus */
+{ 0x8086, 0x15b7}, /* Ethernet controller: Intel Corporation Ethernet Connection (2) I219-LM */
+{ 0x8086, 0x24f3}, /* Network controller: Intel Corporation Wireless 8260 */
+{ 0x8086, 0x1910}, /* Intel Corporation Skylake Host Bridge/DRAM Registers */
+{ 0x8086, 0x193b}, /* ntel Corporation Iris Pro Graphics 580 */
 /*
  * Devices
  */
@@ -142,6 +156,8 @@ static struct pci_ids known_good[] =
 { 0x8086, 0x1559}, /* Intel tehernet I218-U */
 { 0x168c, 0x0032}, /* AR9580 Wireless Adapter */
 { 0x14e4, 0x1639}, /* Broadcom BCM5709 Gigabit Ethernet */
+{ 0x1217, 0x8621}, /* SD Host controller: O2 Micro, Inc. SD/MMC Card Reader Controller */
+{ 0x144d, 0xa802}, /* Non-Volatile memory controller: Samsung Electronics Co Ltd NVMe SSD Controller SM951/PM951 */
 
 {0, 0, NULL} };
 
