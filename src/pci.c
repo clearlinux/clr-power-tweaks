@@ -148,7 +148,9 @@ static struct pci_ids known_good[] =
 { 0x8086, 0x15b7}, /* Ethernet controller: Intel Corporation Ethernet Connection (2) I219-LM */
 { 0x8086, 0x24f3}, /* Network controller: Intel Corporation Wireless 8260 */
 { 0x8086, 0x1910}, /* Intel Corporation Skylake Host Bridge/DRAM Registers */
-{ 0x8086, 0x193b}, /* ntel Corporation Iris Pro Graphics 580 */
+{ 0x8086, 0x193b}, /* Intel Corporation Iris Pro Graphics 580 */
+{ 0x8086, 0xa131}, /* Intel Corporation Sunrise Point-H Thermal subsystem */
+{ 0x8086, 0xa12f}, /* Intel Corporation Sunrise Point-H USB 3.0 xHCI Controller */
 /*
  * Devices
  */
@@ -159,7 +161,7 @@ static struct pci_ids known_good[] =
 { 0x1217, 0x8621}, /* SD Host controller: O2 Micro, Inc. SD/MMC Card Reader Controller */
 { 0x144d, 0xa802}, /* Non-Volatile memory controller: Samsung Electronics Co Ltd NVMe SSD Controller SM951/PM951 */
 
-{0, 0, NULL} };
+{0, 0} };
 
 void do_pci_pm(void)
 {
