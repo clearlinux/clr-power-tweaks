@@ -151,6 +151,26 @@ static struct pci_ids known_good[] =
 { 0x8086, 0x193b}, /* Intel Corporation Iris Pro Graphics 580 */
 { 0x8086, 0xa131}, /* Intel Corporation Sunrise Point-H Thermal subsystem */
 { 0x8086, 0xa12f}, /* Intel Corporation Sunrise Point-H USB 3.0 xHCI Controller */
+
+{ 0x8086, 0x5904}, /* KBL root bridge */
+{ 0x8086, 0x5916}, /* KBL gfx */
+{ 0x8086, 0x1903}, /* KBL thermal */
+{ 0x8086, 0x9d2f}, /* KBL USB */
+{ 0x8086, 0x9d31}, /* KBL Audio */
+{ 0x8086, 0x9d60}, /* KBL I2C */
+{ 0x8086, 0x9d61}, /* KBL I2C */
+{ 0x8086, 0x9d3a}, /* KBL HECI */
+{ 0x8086, 0x9d10}, /* KBL PCI bridge */
+{ 0x8086, 0x9d14}, /* KBL PCI root port */
+{ 0x8086, 0x9d15}, /* KBL PCI root port */
+{ 0x8086, 0x9d18}, /* KBL PCI root port */
+{ 0x8086, 0x9d58}, /* KBL ISA */
+{ 0x8086, 0x9d21}, /* KBL MEM */
+{ 0x8086, 0x9d71}, /* KBL Audio */
+{ 0x8086, 0x9d23}, /* KBL SMBus */
+
+
+
 /*
  * Devices
  */
@@ -160,6 +180,9 @@ static struct pci_ids known_good[] =
 { 0x14e4, 0x1639}, /* Broadcom BCM5709 Gigabit Ethernet */
 { 0x1217, 0x8621}, /* SD Host controller: O2 Micro, Inc. SD/MMC Card Reader Controller */
 { 0x144d, 0xa802}, /* Non-Volatile memory controller: Samsung Electronics Co Ltd NVMe SSD Controller SM951/PM951 */
+{ 0x168c, 0x003e}, /* Qualcomm Atheros QCA6174 802.11ac Wireless Network Adapter  */
+{ 0x10ec, 0x525a}, /* Realtek Semiconductor Co., Ltd. RTS525A PCI Express Card Reader */
+{ 0x1179, 0x0115}, /* Toshiba NVME */
 
 {0, 0} };
 
