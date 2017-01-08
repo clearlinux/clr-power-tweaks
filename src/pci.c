@@ -250,11 +250,12 @@ void do_pci_pm(void)
 		while (1) {
 			if (known_good[i].vendor == 0)
 				break;
-			if (known_good[i].vendor == vendor && known_good[i].device == device) {
+			if ( (known_good[i].vendor == vendor && known_good[i].device == device) || (vendor == 0x8086)) {
 				if (asprintf(&filename, "/sys/bus/pci/devices/%s/power/control", entry->d_name) < 0)
                        		 	assert(0);
 				write_string_to_file(filename, "auto");
 				free(filename);
+				break;
 			}
 			i++;
 		}
