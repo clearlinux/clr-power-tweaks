@@ -83,7 +83,7 @@ int main(int argc, char **argv)
 	int i;
 	argp_parse (&argp, argc, argv, 0, 0, NULL);
 	
-	sleep(1);
+	usleep(300000);
 
 	/* USB autosuspend for non-HID */
 
