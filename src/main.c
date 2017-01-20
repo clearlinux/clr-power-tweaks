@@ -81,9 +81,10 @@ static unsigned long long  write_msr(int cpu, unsigned long long new_msr, int of
 int main(int argc, char **argv)
 {
 	int i;
+	nice(20);
 	argp_parse (&argp, argc, argv, 0, 0, NULL);
 	
-	usleep(300000);
+	usleep(30000);
 
 	/* USB autosuspend for non-HID */
 
