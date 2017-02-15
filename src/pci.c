@@ -196,7 +196,6 @@ static struct pci_ids known_good[] =
 { 0x168c, 0x003e}, /* Qualcomm Atheros QCA6174 802.11ac Wireless Network Adapter  */
 { 0x10ec, 0x525a}, /* Realtek Semiconductor Co., Ltd. RTS525A PCI Express Card Reader */
 { 0x1179, 0x0115}, /* Toshiba NVME */
-{ 0x10ec, 0x8168}, /* Realtek Semiconductor Co., Ltd. RTL8111/8168/8411 PCI Express Gigabit Ethernet Controller */
 
 {0, 0} };
 
