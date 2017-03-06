@@ -100,6 +100,9 @@ int main(int argc, char **argv)
 	do_pci_pm();
 	do_gfx_pm();
 	write_string_to_file("/sys/module/snd_hda_intel/parameters/power_save", "1");
+	write_string_to_file("/sys/block/sda/queue/nr_requests", "256");
+	write_string_to_file("/sys/block/sda/queue/read_ahead_kb", "256");
+	write_string_to_file("/sys/block/nvme0n1/queue/read_ahead_kb", "256");
 
 	return EXIT_SUCCESS;
 }
