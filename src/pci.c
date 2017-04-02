@@ -64,6 +64,7 @@ static struct pci_ids known_good[] =
 { 0x8086, 0x0f35}, /* VLV USB xHCI Host Controller */
 { 0x8086, 0x1570}, /* Intel Corporation Ethernet Connection I219-V */
 { 0x8086, 0x15a3}, /* Ethernet controller: Intel Corporation Ethernet Connection (3) I218-V */
+{ 0x8086, 0x15d8}, /* Ethernet controller: Intel Corporation Ethernet Connection (3) I218-V */
 { 0x8086, 0x1604}, /* Host bridge: Intel Corporation Broadwell-U Host Bridge -OPI */
 { 0x8086, 0x160c}, /* Audio device: Intel Corporation Broadwell-U Audio Controller */
 { 0x8086, 0x162b}, /* VGA compatible controller: Intel Corporation Broadwell-U Integrated Graphics */
@@ -107,6 +108,7 @@ static struct pci_ids known_good[] =
 { 0x8086, 0x340e}, /* 5520 IO Hub PCI Express Root Port 7 */
 { 0x8086, 0x3410}, /* 7500 IO Hub PCI Express Root Port 9 */
 { 0x8086, 0x3411}, /* 7500 IO Hub PCI Express Root Port 10 */
+{ 0x8086, 0x5926}, /* 7500 IO Hub PCI Express Root Port 10 */
 { 0x8086, 0x9c03}, /* LPT-LP SATA Contoller (AHCI */
 { 0x8086, 0x9c10}, /* LPT-LP PCI Express Root Port 1 */
 { 0x8086, 0x9c20}, /* LPT-LP HD Audio Controller */
@@ -134,6 +136,7 @@ static struct pci_ids known_good[] =
 { 0x8086, 0x9d31}, /* Intel Corporation Sunrise Point-LP Thermal subsystem */
 { 0x8086, 0x9d3a}, /* Intel Corporation Sunrise Point-LP CSME HECI #1 */
 { 0x8086, 0x9d48}, /* Intel Corporation Sunrise Point-LP LPC Controller */
+{ 0x8086, 0x9d4e}, /* Intel Corporation Sunrise Point-LP LPC Controller */
 { 0x8086, 0x9d70}, /* Intel Corporation Sunrise Point-LP HD Audio */
 { 0x8086, 0xa13a}, /* Communication controller: Intel Corporation Sunrise Point-H CSME HECI #1  */
 { 0x8086, 0xa110}, /* PCI bridge: Intel Corporation Sunrise Point-H PCI Express Root Port #1 */
@@ -195,6 +198,7 @@ static struct pci_ids known_good[] =
 { 0x144d, 0xa802}, /* Non-Volatile memory controller: Samsung Electronics Co Ltd NVMe SSD Controller SM951/PM951 */
 { 0x168c, 0x003e}, /* Qualcomm Atheros QCA6174 802.11ac Wireless Network Adapter  */
 { 0x10ec, 0x525a}, /* Realtek Semiconductor Co., Ltd. RTS525A PCI Express Card Reader */
+{ 0x10ec, 0x5259}, /* Realtek Semiconductor Co., Ltd. RTS525A PCI Express Card Reader */
 { 0x1179, 0x0115}, /* Toshiba NVME */
 
 {0, 0} };
