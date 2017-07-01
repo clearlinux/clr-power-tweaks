@@ -186,6 +186,12 @@ static struct pci_ids known_good[] =
 { 0x8086, 0xa2f0}, /* KBL USB */
 { 0x8086, 0xa2a3}, /* KBL root bridge */
 
+{ 0x8086, 0xa282}, /* Core i9 sata */
+{ 0x8086, 0xa2af}, /* Core i9 xhci */
+{ 0x8086, 0xa2af}, /* Core i9 xhci */
+{ 0x8086, 0xa2f0}, /* Core i9 audio */
+
+
 
 /*
  * Devices
