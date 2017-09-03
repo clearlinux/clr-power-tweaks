@@ -190,6 +190,12 @@ static struct pci_ids known_good[] =
 { 0x8086, 0xa2af}, /* Core i9 xhci */
 { 0x8086, 0xa2af}, /* Core i9 xhci */
 { 0x8086, 0xa2f0}, /* Core i9 audio */
+{ 0x8086, 0xa298}, /* Core i9 PCI */
+{ 0x8086, 0xa298}, /* Core i9 PCI */
+{ 0x8086, 0xa294}, /* Core i9 PCI */
+{ 0x8086, 0xa290}, /* Core i9 PCI */
+{ 0x8086, 0xa2e7}, /* Core i9 PCI */
+{ 0x8086, 0x2030}, /* Core i9 PCI */
 
 
 
@@ -206,6 +212,7 @@ static struct pci_ids known_good[] =
 { 0x10ec, 0x525a}, /* Realtek Semiconductor Co., Ltd. RTS525A PCI Express Card Reader */
 { 0x10ec, 0x5259}, /* Realtek Semiconductor Co., Ltd. RTS525A PCI Express Card Reader */
 { 0x1179, 0x0115}, /* Toshiba NVME */
+{ 0x1b21, 0x2142}, /* ASMedia Technology Inc. Device */
 
 {0, 0} };
 
