@@ -112,6 +112,7 @@ int main(int argc, char **argv)
 	write_string_to_file("/sys/block/nvme0n1/queue/nr_requests", "512");
 	write_string_to_file("/sys/block/nvme0n1/queue/read_ahead_kb", "256");
 	write_string_to_file("/proc/sys/kernel/sched_itmt_enabled", "1");
+	write_string_to_file("/sys/devices/system/cpu/microcode/reload", "1");
 
 	return EXIT_SUCCESS;
 }
