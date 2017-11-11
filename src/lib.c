@@ -35,7 +35,7 @@ void write_string_to_file(char *filename, char *string)
 	FILE *file;
 	file = fopen(filename, "w");
 	if (!file) {
-		printf("Cannot write %s to %s: %s\n", string, filename, strerror(errno));
+		// printf("Cannot write %s to %s: %s\n", string, filename, strerror(errno));
 		return;
 	}
 	fprintf(file, "%s\n", string);
