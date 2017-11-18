@@ -204,6 +204,21 @@ static struct pci_ids known_good[] =
 { 0x8086, 0xa2e7}, /* Core i9 PCI */
 { 0x8086, 0x2030}, /* Core i9 PCI */
 
+{ 0x8086, 0x5af0}, /* Apollo lake  PCI */
+{ 0x8086, 0x5a8c}, /* Apollo lake  PCI */
+{ 0x8086, 0x5a85}, /* Apollo lake  PCI */
+{ 0x8086, 0x5a98}, /* Apollo lake  PCI */
+{ 0x8086, 0x5a9a}, /* Apollo lake  PCI */
+{ 0x8086, 0x5ae3}, /* Apollo lake  PCI */
+{ 0x8086, 0x5ad8}, /* Apollo lake  PCI */
+{ 0x8086, 0x5ad9}, /* Apollo lake  PCI */
+{ 0x8086, 0x5aa8}, /* Apollo lake  PCI */
+{ 0x8086, 0x5ac8}, /* Apollo lake  PCI */
+{ 0x8086, 0x5acc}, /* Apollo lake  PCI */
+{ 0x8086, 0x5ae8}, /* Apollo lake  PCI */
+{ 0x8086, 0x5ad4}, /* Apollo lake  PCI */
+{ 0x8086, 0x3165}, /* Apollo lake  PCI */
+
 
 
 /*
@@ -220,6 +235,7 @@ static struct pci_ids known_good[] =
 { 0x10ec, 0x5259}, /* Realtek Semiconductor Co., Ltd. RTS525A PCI Express Card Reader */
 { 0x1179, 0x0115}, /* Toshiba NVME */
 { 0x1b21, 0x2142}, /* ASMedia Technology Inc. Device */
+{ 0x10ec, 0x8168}, /* Realtek RTL8168 */
 
 {0, 0} };
 
