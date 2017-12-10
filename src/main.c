@@ -100,16 +100,40 @@ int main(int argc, char **argv)
 	do_pci_pm();
 	do_gfx_pm();
 	write_string_to_file("/sys/block/sda/queue/nr_requests", "2048");
-	write_string_to_file("/sys/block/sda/queue/add_random", "1");
-	write_string_to_file("/sys/block/sdb/queue/nr_requests", "2048");
 	write_string_to_file("/sys/block/sda/queue/read_ahead_kb", "2048");
+	write_string_to_file("/sys/block/sda/queue/add_random", "1");
+	write_string_to_file("/sys/block/sda/queue/scheduler", "kyber");
+
+	write_string_to_file("/sys/block/sdb/queue/nr_requests", "2048");
+	write_string_to_file("/sys/block/sdb/queue/read_ahead_kb", "2048");
 	write_string_to_file("/sys/block/sdb/queue/add_random", "1");
+	write_string_to_file("/sys/block/sdb/queue/scheduler", "kyber");
+
 	write_string_to_file("/sys/block/sdc/queue/nr_requests", "2048");
+	write_string_to_file("/sys/block/sdc/queue/read_ahead_kb", "2048");
 	write_string_to_file("/sys/block/sdc/queue/add_random", "1");
+	write_string_to_file("/sys/block/sdc/queue/scheduler", "kyber");
+
 	write_string_to_file("/sys/block/sdd/queue/nr_requests", "2048");
+	write_string_to_file("/sys/block/sdd/queue/read_ahead_kb", "2048");
 	write_string_to_file("/sys/block/sdd/queue/add_random", "1");
+	write_string_to_file("/sys/block/sdd/queue/scheduler", "kyber");
+
+	write_string_to_file("/sys/block/sde/queue/nr_requests", "2048");
+	write_string_to_file("/sys/block/sde/queue/read_ahead_kb", "2048");
+	write_string_to_file("/sys/block/sde/queue/add_random", "1");
+	write_string_to_file("/sys/block/sde/queue/scheduler", "kyber");
+
+	write_string_to_file("/sys/block/sdf/queue/nr_requests", "2048");
+	write_string_to_file("/sys/block/sdf/queue/read_ahead_kb", "2048");
+	write_string_to_file("/sys/block/sdf/queue/add_random", "1");
+	write_string_to_file("/sys/block/sdf/queue/scheduler", "kyber");
+
 	write_string_to_file("/sys/block/nvme0n1/queue/nr_requests", "2048");
 	write_string_to_file("/sys/block/nvme0n1/queue/read_ahead_kb", "256");
+	write_string_to_file("/sys/block/nvme0n1/queue/add_random", "1");
+	write_string_to_file("/sys/block/nvme0n1/queue/scheduler", "kyber");
+
 	write_string_to_file("/proc/sys/kernel/sched_itmt_enabled", "1");
 	write_string_to_file("/sys/devices/system/cpu/microcode/reload", "1");
 	usleep(10000);
