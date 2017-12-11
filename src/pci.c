@@ -225,7 +225,8 @@ static struct pci_ids known_good[] =
  * Devices
  */
 { 0x8086, 0x088e}, /* Centrino Advanced-N 6235 */
-{ 0x8086, 0x1559}, /* Intel tehernet I218-U */
+/* if 0x1559 is enabled, breaks wired network */
+// { 0x8086, 0x1559}, /* Intel tehernet I218-U */
 { 0x168c, 0x0032}, /* AR9580 Wireless Adapter */
 { 0x14e4, 0x1639}, /* Broadcom BCM5709 Gigabit Ethernet */
 { 0x1217, 0x8621}, /* SD Host controller: O2 Micro, Inc. SD/MMC Card Reader Controller */
