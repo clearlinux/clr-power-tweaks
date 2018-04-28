@@ -40,6 +40,15 @@ void do_gfx_pm(void)
 	char line[4096];
 	int i;
 	
+	/* trigger firmware load */
+	file = fopen("/sys/kernel/debug/dri/0/i915_dmc_info", "r");
+	if (!file)
+		return;
+	line[0] = 0;
+	fgets(line, 496, file);
+	fclose(file);
+
+
 	file = fopen("/sys/kernel/debug/dri/0/i915_max_freq", "r");
 	if (!file)
 		return;
