@@ -102,18 +102,6 @@ int main(int argc, char **argv)
 */
 	do_pci_pm();
 	do_gfx_pm();
-	write_string_to_files("/sys/block/sd*/queue/scheduler", "mq-deadline");
-	write_string_to_files("/sys/block/sd*/queue/nr_requests", "1024");
-	write_string_to_files("/sys/block/sd*/queue/read_ahead_kb", "1024");
-	write_string_to_files("/sys/block/sd*/queue/add_random", "1");
-
-	write_string_to_files("/sys/block/nvme*n*/queue/scheduler", "mq-deadline");
-	write_string_to_files("/sys/block/nvme*n*/queue/nr_requests", "2048");
-	write_string_to_files("/sys/block/nvme*n*/queue/read_ahead_kb", "256");
-	write_string_to_files("/sys/block/nvme*n*/queue/add_random", "1");
-
-	write_string_to_file("/proc/sys/kernel/sched_itmt_enabled", "1");
-	write_string_to_file("/sys/devices/system/cpu/microcode/reload", "1");
 
 	return status == 0 ? EXIT_SUCCESS : EXIT_FAILURE;
 }
