@@ -136,8 +136,6 @@ int main(int argc, char **argv)
 
 	write_string_to_file("/proc/sys/kernel/sched_itmt_enabled", "1");
 	write_string_to_file("/sys/devices/system/cpu/microcode/reload", "1");
-	usleep(10000);
-	write_string_to_file("/sys/module/snd_hda_intel/parameters/power_save", "1");
 
 	return EXIT_SUCCESS;
 }
