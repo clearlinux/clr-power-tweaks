@@ -77,12 +77,15 @@ static unsigned long long  write_msr(int cpu, unsigned long long new_msr, int of
 	return old_msr;
 }
 
+extern int generated_tweaks(void);
 
 int main(int argc, char **argv)
 {
 	int i;
 	argp_parse (&argp, argc, argv, 0, 0, NULL);
-	
+
+	int status = generated_tweaks();
+
 //	usleep(150000);
 
 	/* USB autosuspend for non-HID */
@@ -112,5 +115,5 @@ int main(int argc, char **argv)
 	write_string_to_file("/proc/sys/kernel/sched_itmt_enabled", "1");
 	write_string_to_file("/sys/devices/system/cpu/microcode/reload", "1");
 
-	return EXIT_SUCCESS;
+	return status == 0 ? EXIT_SUCCESS : EXIT_FAILURE;
 }
