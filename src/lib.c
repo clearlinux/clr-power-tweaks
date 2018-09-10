@@ -30,7 +30,7 @@
 
 #include <clr_power.h>
 
-void write_string_to_file(char *filename, char *string)
+void write_string_to_file(const char *filename, const char *string)
 {
 	FILE *file;
 	file = fopen(filename, "w");
