@@ -1,6 +1,7 @@
 [Unit]
 Description=Clear Linux Project for Intel Architecture power tweaks
 After=sysinit.target
+Condition=!container
 
 [Service]
 Type=oneshot
