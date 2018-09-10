@@ -4,7 +4,7 @@
  *   This program should do all the things that are hard in udev,
  *   that PowerTOP suggests should be changed from their kernel defaults
  *
- *      Copyright (C) 2012 Intel Corporation
+ *      Copyright (C) 2012-2018 Intel Corporation
  *
  *   This program is free software: you can redistribute it and/or modify
  *   it under the terms of the GNU General Public License as published by
@@ -99,40 +99,15 @@ int main(int argc, char **argv)
 */
 	do_pci_pm();
 	do_gfx_pm();
-	write_string_to_file("/sys/block/sda/queue/scheduler", "mq-deadline");
-	write_string_to_file("/sys/block/sda/queue/nr_requests", "1024");
-	write_string_to_file("/sys/block/sda/queue/read_ahead_kb", "1024");
-	write_string_to_file("/sys/block/sda/queue/add_random", "1");
+	write_string_to_files("/sys/block/sd*/queue/scheduler", "mq-deadline");
+	write_string_to_files("/sys/block/sd*/queue/nr_requests", "1024");
+	write_string_to_files("/sys/block/sd*/queue/read_ahead_kb", "1024");
+	write_string_to_files("/sys/block/sd*/queue/add_random", "1");
 
-	write_string_to_file("/sys/block/sdb/queue/scheduler", "mq-deadline");
-	write_string_to_file("/sys/block/sdb/queue/nr_requests", "1024");
-	write_string_to_file("/sys/block/sdb/queue/read_ahead_kb", "1024");
-	write_string_to_file("/sys/block/sdb/queue/add_random", "1");
-
-	write_string_to_file("/sys/block/sdc/queue/scheduler", "mq-deadline");
-	write_string_to_file("/sys/block/sdc/queue/nr_requests", "1024");
-	write_string_to_file("/sys/block/sdc/queue/read_ahead_kb", "1024");
-	write_string_to_file("/sys/block/sdc/queue/add_random", "1");
-
-	write_string_to_file("/sys/block/sdd/queue/scheduler", "mq-deadline");
-	write_string_to_file("/sys/block/sdd/queue/nr_requests", "1024");
-	write_string_to_file("/sys/block/sdd/queue/read_ahead_kb", "1024");
-	write_string_to_file("/sys/block/sdd/queue/add_random", "1");
-
-	write_string_to_file("/sys/block/sde/queue/scheduler", "mq-deadline");
-	write_string_to_file("/sys/block/sde/queue/nr_requests", "1024");
-	write_string_to_file("/sys/block/sde/queue/read_ahead_kb", "1024");
-	write_string_to_file("/sys/block/sde/queue/add_random", "1");
-
-	write_string_to_file("/sys/block/sdf/queue/scheduler", "mq-deadline");
-	write_string_to_file("/sys/block/sdf/queue/nr_requests", "1024");
-	write_string_to_file("/sys/block/sdf/queue/read_ahead_kb", "1024");
-	write_string_to_file("/sys/block/sdf/queue/add_random", "1");
-
-	write_string_to_file("/sys/block/nvme0n1/queue/scheduler", "mq-deadline");
-	write_string_to_file("/sys/block/nvme0n1/queue/nr_requests", "2048");
-	write_string_to_file("/sys/block/nvme0n1/queue/read_ahead_kb", "256");
-	write_string_to_file("/sys/block/nvme0n1/queue/add_random", "1");
+	write_string_to_files("/sys/block/nvme*n*/queue/scheduler", "mq-deadline");
+	write_string_to_files("/sys/block/nvme*n*/queue/nr_requests", "2048");
+	write_string_to_files("/sys/block/nvme*n*/queue/read_ahead_kb", "256");
+	write_string_to_files("/sys/block/nvme*n*/queue/add_random", "1");
 
 	write_string_to_file("/proc/sys/kernel/sched_itmt_enabled", "1");
 	write_string_to_file("/sys/devices/system/cpu/microcode/reload", "1");
