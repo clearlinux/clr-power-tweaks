@@ -6,6 +6,3 @@ Condition=!container
 [Service]
 Type=oneshot
 ExecStart=/usr/bin/clr_power
-
-[Install]
-WantedBy=multi-user.target

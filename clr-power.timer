@@ -1,0 +1,10 @@
+[Unit]
+Description=Apply Clear Linux Project for Intel Architecture power tweaks after boot
+Condition=!container
+
+[Timer]
+OnStartupSec=10
+AccuracySec=3
+
+[Install]
+WantedBy=timers.target
