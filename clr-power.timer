@@ -1,6 +1,6 @@
 [Unit]
 Description=Apply Clear Linux Project for Intel Architecture power tweaks after boot
-Condition=!container
+ConditionVirtualization=!container
 
 [Timer]
 OnStartupSec=10
