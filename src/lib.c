@@ -40,7 +40,7 @@ int write_string_to_file(const char *filename, const char *string)
 	FILE *file;
 	file = fopen(filename, "w");
 	if (!file) {
-		fprintf(stderr, "Cannot write \"%s\" to %s: %s\n", string, filename, strerror(errno));
+//		fprintf(stderr, "Cannot write \"%s\" to %s: %s\n", string, filename, strerror(errno));
 		return -1;
 	}
 	fprintf(file, "%s\n", string);
