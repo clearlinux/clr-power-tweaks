@@ -61,7 +61,10 @@ int write_string_to_files(const char *match, const char *string)
 	glob_t globbuf;
 	int status = 0;
 
-	if (glob(match, GLOB_NOSORT, NULL, &globbuf) != 0)
+	int r = glob(match, GLOB_NOSORT, NULL, &globbuf);
+	if (r == GLOB_NOMATCH)
+		return 0;
+	if (r != 0)
 		return -1;
 	for (i = 0; i < globbuf.gl_pathc; ++i)
 		status |= write_string_to_file(globbuf.gl_pathv[i], string);
