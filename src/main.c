@@ -102,6 +102,7 @@ int main(int argc, char **argv)
 */
 	do_pci_pm();
 	do_gfx_pm();
+	verify_time();
 
 	return status == 0 ? EXIT_SUCCESS : EXIT_FAILURE;
 }

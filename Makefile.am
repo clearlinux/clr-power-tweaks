@@ -1,5 +1,5 @@
 bin_PROGRAMS = clr_power
-clr_power_SOURCES = src/main.c src/lib.c src/pci.c src/ethernet.c src/usb.c src/gfx.c generated.c
+clr_power_SOURCES = src/main.c src/lib.c src/pci.c src/ethernet.c src/usb.c src/gfx.c src/verifytime.c generated.c
 
 systemdsystemunit_DATA = clr-power.service clr-power.timer
 
