@@ -86,6 +86,8 @@ int main(int argc, char **argv)
 
 	int status = generated_tweaks();
 
+	write_string_to_file("/proc/sys/kernel/nmi_watchdog", "0");
+
 //	usleep(150000);
 
 	/* USB autosuspend for non-HID */
