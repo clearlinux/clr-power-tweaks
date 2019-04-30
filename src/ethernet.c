@@ -104,7 +104,7 @@ static void maximize_queues(char *iface)
 	ifr.ifr_data = (caddr_t)&echannels;
 	ret = ioctl(sock, SIOCETHTOOL, &ifr);
 	
-        if (ret == 0 && echannels.combined_count != echannels.max_combined && echannels.max_combined > 0) {
+        if (ret == 0 && echannels.combined_count < echannels.max_combined / 2 && echannels.max_combined > 0) {
         	echannels.cmd = ETHTOOL_SCHANNELS;
         	echannels.combined_count = echannels.max_combined;
 	        ioctl(sock, SIOCETHTOOL, &ifr);
