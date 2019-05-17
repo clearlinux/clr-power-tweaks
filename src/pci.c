@@ -361,7 +361,7 @@ static struct pci_ids known_good[] =
 { 0x168c, 0x0032}, /* AR9580 Wireless Adapter */
 { 0x14e4, 0x1639}, /* Broadcom BCM5709 Gigabit Ethernet */
 { 0x1217, 0x8621}, /* SD Host controller: O2 Micro, Inc. SD/MMC Card Reader Controller */
-{ 0x144d, 0xa802}, /* Non-Volatile memory controller: Samsung Electronics Co Ltd NVMe SSD Controller SM951/PM951 */
+//{ 0x144d, 0xa802}, /* Non-Volatile memory controller: Samsung Electronics Co Ltd NVMe SSD Controller SM951/PM951 */
 { 0x168c, 0x003e}, /* Qualcomm Atheros QCA6174 802.11ac Wireless Network Adapter  */
 { 0x10ec, 0x525a}, /* Realtek Semiconductor Co., Ltd. RTS525A PCI Express Card Reader */
 { 0x10ec, 0x5259}, /* Realtek Semiconductor Co., Ltd. RTS525A PCI Express Card Reader */
