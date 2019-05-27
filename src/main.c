@@ -87,6 +87,7 @@ int main(int argc, char **argv)
 	int status = generated_tweaks();
 
 	write_string_to_file("/proc/sys/kernel/nmi_watchdog", "0");
+	write_string_to_file("/sys/block/<disk>/queue/iosched/slice_idle", "0");
 
 //	usleep(150000);
 
