@@ -58,6 +58,9 @@ static struct usb_dev known_good[] =
 {0x1d6b, 0x0002, 0x0009},
 {0x1d6b, 0x0003, 0x0009},
 /* BYT-T additions end */
+/* Dell XPS 13 9360 (KBL) additions */
+{0x04f3, 0x2234, 0x0000},	/* Elan HID-Touchscreen, needed for >PkgC8 */
+/* Dell XPS 13 9360 (KBL) additions end */
 {0xFFFF, 0xFFFF, 0} };
 
 void do_usb_pm(void)
