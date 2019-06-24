@@ -41,9 +41,44 @@
 
 const char *argp_program_version = "Clear Linux Project for Intel Architecture Power Tweaks v" VERSION;
 
+const char *argp_program_bug_address = PACKAGE_BUGREPORT;
+
 const char doc[] = "Power Tweaks -- adjusts runtime kernel options for optimal power and performance";
 
-static struct argp argp = { NULL, NULL, 0, doc };
+const char args_doc[] = "";
+
+static struct argp_option options[] = {
+	{ "debug", 'd', 0, OPTION_ARG_OPTIONAL, "Display debug/verbose output" },
+	{ 0 },
+};
+
+struct arguments
+{
+	char *args[1];
+	bool debug;
+};
+
+static error_t parse_opt(int key, char *arg, struct argp_state *state)
+{
+	struct arguments *arguments = state->input;
+
+	switch (key) {
+	case 'd':
+		arguments->debug = true;
+		break;
+	case ARGP_KEY_ARG:
+		if (state->arg_num > 0)
+			argp_usage(state);
+		arguments->args[state->arg_num] = arg;
+		break;
+	default:
+		return ARGP_ERR_UNKNOWN;
+	}
+
+	return 0;
+}
+
+static struct argp argp = { options, parse_opt, args_doc, doc };
 
 #define MSR_IA32_ENERGY_PERF_BIAS       0x000001b0
 
@@ -81,8 +116,13 @@ extern int generated_tweaks(void);
 
 int main(int argc, char **argv)
 {
+	struct arguments arguments;
 	int i;
-	argp_parse (&argp, argc, argv, 0, 0, NULL);
+
+	arguments.debug = false;
+	argp_parse (&argp, argc, argv, 0, 0, &arguments);
+
+	lib_init(arguments.debug);
 
 	int status = generated_tweaks();
 
