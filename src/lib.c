@@ -31,6 +31,18 @@
 
 #include <clr_power.h>
 
+static bool debug_mode;
+
+/**
+ * Initializes lib functionality. Takes one argument (dbg). If dbg is "true",
+ * then verbose/debug output will be printed to stdout-- otherwise no output
+ * will be printed.
+ */
+void lib_init(const bool dbg)
+{
+	debug_mode = dbg;
+}
+
 /**
  * Writes @p string to file @p filename, with a newline. Returns zero
  * on success and -1 on failure.
@@ -40,9 +52,12 @@ int write_string_to_file(const char *filename, const char *string)
 	FILE *file;
 	file = fopen(filename, "w");
 	if (!file) {
-//		fprintf(stderr, "Cannot write \"%s\" to %s: %s\n", string, filename, strerror(errno));
+		if (debug_mode)
+			fprintf(stdout, "Cannot write \"%s\" to %s: %s\n", string, filename, strerror(errno));
 		return -1;
 	}
+	if (debug_mode)
+		fprintf(stdout, "Writing \"%s\" to %s\n", string, filename);
 	fprintf(file, "%s\n", string);
 	fclose(file);
 	return 0;
