@@ -3,8 +3,10 @@
 
 AC_PREREQ([2.66])
 AC_INIT([clr-power-tweaks], [200], [dev@lists.clearlinux.org])
-AM_INIT_AUTOMAKE([foreign -Wall -Wextra subdir-objects])
+AM_INIT_AUTOMAKE([foreign -Wall -Wextra-portability subdir-objects])
 AM_SILENT_RULES([yes])
+AC_CONFIG_MACRO_DIRS([m4])
+LT_INIT
 AC_PROG_CC
 AC_LANG(C)
 AC_CONFIG_HEADERS([config.h])
