@@ -1,0 +1,10 @@
+[Unit]
+Description=Rfkill bluetooth controllers on first boot
+After=sysinit.target
+ConditionFileIsExecutable=/usr/bin/rfkill
+ConditionFirstBoot=true
+ConditionVirtualization=!container
+
+[Service]
+Type=oneshot
+ExecStart=/usr/bin/rfkill block bluetooth
