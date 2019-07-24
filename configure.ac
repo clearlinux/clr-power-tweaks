@@ -2,7 +2,7 @@
 # Process this file with autoconf to produce a configure script.
 
 AC_PREREQ([2.66])
-AC_INIT([clr-power-tweaks], [200], [dev@lists.clearlinux.org])
+AC_INIT([clr-power-tweaks], [201], [dev@lists.clearlinux.org])
 AM_INIT_AUTOMAKE([foreign -Wall -Wextra-portability subdir-objects])
 AM_SILENT_RULES([yes])
 AC_CONFIG_MACRO_DIRS([m4])
