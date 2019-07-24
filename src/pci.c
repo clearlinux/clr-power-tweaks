@@ -366,6 +366,7 @@ static struct pci_ids known_good[] =
 { 0x10ec, 0x525a}, /* Realtek Semiconductor Co., Ltd. RTS525A PCI Express Card Reader */
 { 0x10ec, 0x5259}, /* Realtek Semiconductor Co., Ltd. RTS525A PCI Express Card Reader */
 { 0x1179, 0x0115}, /* Toshiba NVME */
+{ 0x1179, 0x0116}, /* Toshiba NVME */
 { 0x1b21, 0x2142}, /* ASMedia Technology Inc. Device */
 { 0x10ec, 0x8168}, /* Realtek RTL8168 */
 
