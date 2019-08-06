@@ -65,7 +65,7 @@ static struct pci_ids known_good[] =
 { 0x8086, 0x156f}, /* Intel Corporation Ethernet Connection I219-LM */
 { 0x8086, 0x1570}, /* Intel Corporation Ethernet Connection I219-V */
 { 0x8086, 0x15a3}, /* Ethernet controller: Intel Corporation Ethernet Connection (3) I218-V */
-//{ 0x8086, 0x15d8}, /* Ethernet controller: Intel Corporation Ethernet Connection (3) I218-V */
+{ 0x8086, 0x15d8}, /* Ethernet controller: Intel Corporation Ethernet Connection (3) I218-V */
 { 0x8086, 0x1604}, /* Host bridge: Intel Corporation Broadwell-U Host Bridge -OPI */
 { 0x8086, 0x160c}, /* Audio device: Intel Corporation Broadwell-U Audio Controller */
 { 0x8086, 0x162b}, /* VGA compatible controller: Intel Corporation Broadwell-U Integrated Graphics */
