@@ -62,6 +62,7 @@ static struct pci_ids known_good[] =
 { 0x8086, 0x0f1c}, /* VLV PCU */
 { 0x8086, 0x0f31}, /* VLV PCI Generation 7 */
 { 0x8086, 0x0f35}, /* VLV USB xHCI Host Controller */
+{ 0x8086, 0x156f}, /* Intel Corporation Ethernet Connection I219-LM */
 { 0x8086, 0x1570}, /* Intel Corporation Ethernet Connection I219-V */
 { 0x8086, 0x15a3}, /* Ethernet controller: Intel Corporation Ethernet Connection (3) I218-V */
 //{ 0x8086, 0x15d8}, /* Ethernet controller: Intel Corporation Ethernet Connection (3) I218-V */
@@ -135,6 +136,7 @@ static struct pci_ids known_good[] =
 { 0x8086, 0x9d2f}, /* Intel Corporation Sunrise Point-LP USB 3.0 xHCI Controller */
 { 0x8086, 0x9d31}, /* Intel Corporation Sunrise Point-LP Thermal subsystem */
 { 0x8086, 0x9d3a}, /* Intel Corporation Sunrise Point-LP CSME HECI #1 */
+{ 0x8086, 0x9d3d}, /* Intel Corporation Sunrise Point-LP Active Management Technology */
 { 0x8086, 0x9d48}, /* Intel Corporation Sunrise Point-LP LPC Controller */
 { 0x8086, 0x9d4e}, /* Intel Corporation Sunrise Point-LP LPC Controller */
 { 0x8086, 0x9d70}, /* Intel Corporation Sunrise Point-LP HD Audio */
@@ -161,6 +163,9 @@ static struct pci_ids known_good[] =
 { 0x8086, 0x9d48}, /* Intel Corporation Sunrise Point-H USB 3.0 xHCI Controller */
 { 0x8086, 0x9d56}, /* Intel Corporation Sunrise Point-H USB 3.0 xHCI Controller */
 { 0x8086, 0x9d58}, /* Intel Corporation Sunrise Point-H USB 3.0 xHCI Controller */
+
+{ 0x8086, 0x5914}, /* KBL-R root bridge */
+{ 0x8086, 0x5917}, /* KBL-R gfx */
 
 { 0x8086, 0x5904}, /* KBL root bridge */
 { 0x8086, 0x5916}, /* KBL gfx */
