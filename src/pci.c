@@ -186,6 +186,7 @@ static struct pci_ids known_good[] =
 
 { 0x8086, 0x591f}, /* KBL root bridge */
 { 0x8086, 0x5912}, /* KBL gfx */
+{ 0x8086, 0x5927}, /* KBL gfx */
 { 0x8086, 0xa2af}, /* KBL USB */
 { 0x8086, 0xa2ba}, /* KBL root bridge */
 { 0x8086, 0xa282}, /* KBL gfx */
@@ -348,6 +349,7 @@ static struct pci_ids known_good[] =
 { 0x8086, 0x34a3 },
 { 0x8086, 0x34a4 },
 { 0x8086, 0x15e2 },
+{ 0x8086, 0xf1a5 },
 { 0x8086, 0xf1a6 },
 
 
@@ -368,6 +370,7 @@ static struct pci_ids known_good[] =
 { 0x1217, 0x8621}, /* SD Host controller: O2 Micro, Inc. SD/MMC Card Reader Controller */
 //{ 0x144d, 0xa802}, /* Non-Volatile memory controller: Samsung Electronics Co Ltd NVMe SSD Controller SM951/PM951 */
 { 0x168c, 0x003e}, /* Qualcomm Atheros QCA6174 802.11ac Wireless Network Adapter  */
+{ 0x10ec, 0x5229}, /* Realtek Semiconductor Co., Ltd. RTS5229 PCI Express Card Reader */
 { 0x10ec, 0x525a}, /* Realtek Semiconductor Co., Ltd. RTS525A PCI Express Card Reader */
 { 0x10ec, 0x5259}, /* Realtek Semiconductor Co., Ltd. RTS525A PCI Express Card Reader */
 { 0x1179, 0x0115}, /* Toshiba NVME */
