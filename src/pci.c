@@ -62,9 +62,10 @@ static struct pci_ids known_good[] =
 { 0x8086, 0x0f1c}, /* VLV PCU */
 { 0x8086, 0x0f31}, /* VLV PCI Generation 7 */
 { 0x8086, 0x0f35}, /* VLV USB xHCI Host Controller */
+{ 0x8086, 0x156f}, /* Intel Corporation Ethernet Connection I219-LM */
 { 0x8086, 0x1570}, /* Intel Corporation Ethernet Connection I219-V */
 { 0x8086, 0x15a3}, /* Ethernet controller: Intel Corporation Ethernet Connection (3) I218-V */
-//{ 0x8086, 0x15d8}, /* Ethernet controller: Intel Corporation Ethernet Connection (3) I218-V */
+{ 0x8086, 0x15d8}, /* Ethernet controller: Intel Corporation Ethernet Connection (3) I218-V */
 { 0x8086, 0x1604}, /* Host bridge: Intel Corporation Broadwell-U Host Bridge -OPI */
 { 0x8086, 0x160c}, /* Audio device: Intel Corporation Broadwell-U Audio Controller */
 { 0x8086, 0x162b}, /* VGA compatible controller: Intel Corporation Broadwell-U Integrated Graphics */
@@ -135,6 +136,7 @@ static struct pci_ids known_good[] =
 { 0x8086, 0x9d2f}, /* Intel Corporation Sunrise Point-LP USB 3.0 xHCI Controller */
 { 0x8086, 0x9d31}, /* Intel Corporation Sunrise Point-LP Thermal subsystem */
 { 0x8086, 0x9d3a}, /* Intel Corporation Sunrise Point-LP CSME HECI #1 */
+{ 0x8086, 0x9d3d}, /* Intel Corporation Sunrise Point-LP Active Management Technology */
 { 0x8086, 0x9d48}, /* Intel Corporation Sunrise Point-LP LPC Controller */
 { 0x8086, 0x9d4e}, /* Intel Corporation Sunrise Point-LP LPC Controller */
 { 0x8086, 0x9d70}, /* Intel Corporation Sunrise Point-LP HD Audio */
@@ -162,6 +164,9 @@ static struct pci_ids known_good[] =
 { 0x8086, 0x9d56}, /* Intel Corporation Sunrise Point-H USB 3.0 xHCI Controller */
 { 0x8086, 0x9d58}, /* Intel Corporation Sunrise Point-H USB 3.0 xHCI Controller */
 
+{ 0x8086, 0x5914}, /* KBL-R root bridge */
+{ 0x8086, 0x5917}, /* KBL-R gfx */
+
 { 0x8086, 0x5904}, /* KBL root bridge */
 { 0x8086, 0x5916}, /* KBL gfx */
 { 0x8086, 0x1903}, /* KBL thermal */
@@ -181,6 +186,7 @@ static struct pci_ids known_good[] =
 
 { 0x8086, 0x591f}, /* KBL root bridge */
 { 0x8086, 0x5912}, /* KBL gfx */
+{ 0x8086, 0x5927}, /* KBL gfx */
 { 0x8086, 0xa2af}, /* KBL USB */
 { 0x8086, 0xa2ba}, /* KBL root bridge */
 { 0x8086, 0xa282}, /* KBL gfx */
@@ -343,6 +349,7 @@ static struct pci_ids known_good[] =
 { 0x8086, 0x34a3 },
 { 0x8086, 0x34a4 },
 { 0x8086, 0x15e2 },
+{ 0x8086, 0xf1a5 },
 { 0x8086, 0xf1a6 },
 
 
@@ -363,6 +370,7 @@ static struct pci_ids known_good[] =
 { 0x1217, 0x8621}, /* SD Host controller: O2 Micro, Inc. SD/MMC Card Reader Controller */
 //{ 0x144d, 0xa802}, /* Non-Volatile memory controller: Samsung Electronics Co Ltd NVMe SSD Controller SM951/PM951 */
 { 0x168c, 0x003e}, /* Qualcomm Atheros QCA6174 802.11ac Wireless Network Adapter  */
+{ 0x10ec, 0x5229}, /* Realtek Semiconductor Co., Ltd. RTS5229 PCI Express Card Reader */
 { 0x10ec, 0x525a}, /* Realtek Semiconductor Co., Ltd. RTS525A PCI Express Card Reader */
 { 0x10ec, 0x5259}, /* Realtek Semiconductor Co., Ltd. RTS525A PCI Express Card Reader */
 { 0x1179, 0x0115}, /* Toshiba NVME */
