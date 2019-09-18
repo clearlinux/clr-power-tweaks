@@ -2,6 +2,7 @@
 Description=Rfkill bluetooth controllers on first boot
 After=sysinit.target
 ConditionFileIsExecutable=/usr/bin/rfkill
+ConditionPathExists=/dev/rfkill
 ConditionFirstBoot=true
 ConditionVirtualization=!container
 
