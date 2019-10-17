@@ -164,6 +164,8 @@ static struct pci_ids known_good[] =
 { 0x8086, 0x9d56}, /* Intel Corporation Sunrise Point-H USB 3.0 xHCI Controller */
 { 0x8086, 0x9d58}, /* Intel Corporation Sunrise Point-H USB 3.0 xHCI Controller */
 
+{ 0x8086, 0x3e34}, /* WHL root bridge */
+
 { 0x8086, 0x5914}, /* KBL-R root bridge */
 { 0x8086, 0x5917}, /* KBL-R gfx */
 
