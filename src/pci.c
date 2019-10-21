@@ -32,11 +32,6 @@
 #include <sys/types.h>
 #include <dirent.h>
 
-struct pci_ids {
-	unsigned int vendor;
-	unsigned int device;
-};
-
 /*
  * This structure requires some maintenance on it.  Specifically the host
  * controllers need to be listed before any of the devices.  This allows 
