@@ -33,8 +33,8 @@
 #include <dirent.h>
 
 struct pci_ids {
-	int vendor;
-	int device;
+	unsigned int vendor;
+	unsigned int device;
 };
 
 /*

@@ -35,9 +35,9 @@
 
 
 struct usb_dev {
-	int vendor;
-	int device;
-	int class;
+	unsigned int vendor;
+	unsigned int device;
+	unsigned int class;
 };
 
 #define CLASS(x) {0,0,x},
