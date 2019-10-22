@@ -15,6 +15,7 @@ configure
 depcomp
 install-sh
 *.o
+libtool
 ltmain.sh
 m4/
 missing
