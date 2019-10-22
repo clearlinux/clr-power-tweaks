@@ -8,7 +8,7 @@ generated.c: clr-power-tweaks.conf $(top_srcdir)/generate-tweaks.pl
 
 AM_CPPFLAGS = -I$(top_srcdir)/include/
 ACLOCAL_AMFLAGS = -I m4 ${ACLOCAL_FLAGS}
-noinst_HEADERS = include/clr_power.h include/pci-good.h
+noinst_HEADERS = include/clr_power.h include/pci-good.h include/usb-good.h
 noinst_SCRIPTS = generate-tweaks.pl
 noinst_DATA = clr-power-tweaks.conf
 
