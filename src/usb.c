@@ -34,17 +34,6 @@
 
 
 
-struct usb_dev {
-	int vendor;
-	int device;
-	int class;
-};
-
-#define CLASS(x) {0,0,x},
-#define DEVICE(v,d) {v,d,0},
-
-
-
 static struct usb_dev known_good[] =
 { 
 /* {0x8087, 0x09fa, 0x0000} */ /* Intel Sensor Hub. Bust on USB autosusped */

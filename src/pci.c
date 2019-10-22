@@ -32,11 +32,6 @@
 #include <sys/types.h>
 #include <dirent.h>
 
-struct pci_ids {
-	int vendor;
-	int device;
-};
-
 /*
  * This structure requires some maintenance on it.  Specifically the host
  * controllers need to be listed before any of the devices.  This allows 
@@ -383,7 +378,7 @@ static struct pci_ids known_good[] =
 { 0x1b21, 0x2142}, /* ASMedia Technology Inc. Device */
 { 0x10ec, 0x8168}, /* Realtek RTL8168 */
 
-{0, 0} };
+{ 0xffff, 0xffff} };
 
 void do_pci_pm(void)
 {
@@ -447,7 +442,7 @@ void do_pci_pm(void)
 //		printf("Found PCI device %04x:%04x\n", vendor, device);
 		i = 0;
 		while (1) {
-			if (known_good[i].vendor == 0)
+			if (known_good[i].vendor == 0xffff)
 				break;
 			if ( (known_good[i].vendor == vendor && known_good[i].device == device)) {
 				if (asprintf(&filename, "/sys/bus/pci/devices/%s/power/control", entry->d_name) < 0)
