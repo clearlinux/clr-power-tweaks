@@ -9,6 +9,7 @@ AC_CONFIG_MACRO_DIRS([m4])
 LT_INIT
 AC_PROG_CC
 AC_LANG(C)
+AC_PATH_PROG([PERL], [perl])
 AC_CONFIG_HEADERS([config.h])
 PKG_CHECK_MODULES([SYSTEMD], [systemd])
 AC_MSG_CHECKING([systemdsystemunitdir])
