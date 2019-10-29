@@ -11,8 +11,10 @@ AC_PROG_CC
 AC_LANG(C)
 AC_CONFIG_HEADERS([config.h])
 PKG_CHECK_MODULES([SYSTEMD], [systemd])
-systemdsystemunitdir="`$PKG_CONFIG --variable=systemdsystemunitdir systemd`"
-AC_SUBST(systemdsystemunitdir)
+AC_MSG_CHECKING([systemdsystemunitdir])
+PKG_CHECK_VAR([SYSTEMD_SYSTEMUNITDIR], [systemd], [systemdsystemunitdir])
+AC_ARG_VAR([SYSTEMD_SYSTEMUNITDIR])
+AC_MSG_RESULT([$SYSTEMD_SYSTEMUNITDIR])
 
 AC_CONFIG_FILES([Makefile])
 AC_OUTPUT
