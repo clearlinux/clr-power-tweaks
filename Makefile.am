@@ -1,15 +1,17 @@
 bin_PROGRAMS = clr_power
-clr_power_SOURCES = src/main.c src/lib.c src/pci.c src/ethernet.c src/usb.c src/gfx.c src/verifytime.c generated.c
-
-systemdsystemunit_DATA = clr-power.service clr-power.timer clr-power-rfkill.service
+clr_power_SOURCES = src/main.c src/lib.c src/pci.c src/ethernet.c src/usb.c src/gfx.c src/verifytime.c \
+		    clr-power-tweaks.conf generate-tweaks.pl
+nodist_clr_power_SOURCES = generated.c
+CLEANFILES = generated.c
 
 generated.c: clr-power-tweaks.conf $(top_srcdir)/generate-tweaks.pl
-	$(top_srcdir)/generate-tweaks.pl $< > $@
+	$(PERL) $(top_srcdir)/generate-tweaks.pl $< > $@
 
 AM_CPPFLAGS = -I$(top_srcdir)/include/
 ACLOCAL_AMFLAGS = -I m4 ${ACLOCAL_FLAGS}
 noinst_HEADERS = include/clr_power.h include/pci-good.h include/usb-good.h
-noinst_SCRIPTS = generate-tweaks.pl
-noinst_DATA = clr-power-tweaks.conf
 
-EXTRA_DIST = COPYING $(systemdsystemunit_DATA)
+systemunitdir = $(SYSTEMD_SYSTEMUNITDIR)
+systemunit_DATA = clr-power.service clr-power.timer clr-power-rfkill.service
+
+EXTRA_DIST = COPYING $(systemunit_DATA)
