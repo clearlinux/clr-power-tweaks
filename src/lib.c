@@ -77,8 +77,11 @@ int write_string_to_files(const char *match, const char *string)
 	int status = 0;
 
 	int r = glob(match, GLOB_NOSORT, NULL, &globbuf);
-	if (r == GLOB_NOMATCH)
+	if (r == GLOB_NOMATCH) {
+		if (debug_mode)
+			fprintf(stdout, "No match for pattern \"%s\"\n", match);
 		return 0;
+	}
 	if (r != 0)
 		return -1;
 	for (i = 0; i < globbuf.gl_pathc; ++i)
