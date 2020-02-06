@@ -76,7 +76,7 @@ int write_string_to_files(const char *match, const char *string)
 	glob_t globbuf;
 	int status = 0;
 
-	int r = glob(match, GLOB_NOSORT, NULL, &globbuf);
+	int r = glob(match, GLOB_NOSORT | GLOB_BRACE, NULL, &globbuf);
 	if (r == GLOB_NOMATCH) {
 		if (debug_mode)
 			fprintf(stdout, "No match for pattern \"%s\"\n", match);
