@@ -82,38 +82,6 @@ static error_t parse_opt(int key, char *arg, struct argp_state *state)
 
 static struct argp argp = { options, parse_opt, args_doc, doc };
 
-#define MSR_IA32_ENERGY_PERF_BIAS       0x000001b0
-
-static unsigned long long  write_msr(int cpu, unsigned long long new_msr, int offset)
-{
-	unsigned long long old_msr;
-	char msr_path[32];
-	int retval;
-	int fd;
-
-	sprintf(msr_path, "/dev/cpu/%d/msr", cpu);
-	fd = open(msr_path, O_RDWR);
-	if (fd < 0) {
-		perror(msr_path);
-		exit(1);
-	}
-
-	retval = pread(fd, &old_msr, sizeof old_msr, offset);
-	if (retval != sizeof old_msr) {
-		close(fd);
-		return retval;
-	}
-
-	retval = pwrite(fd, &new_msr, sizeof new_msr, offset);
-	if (retval != sizeof new_msr) {
-		printf("pwrite cpu%d 0x%x = %d\n", cpu, offset, retval);
-	}
-
-	close(fd);
-
-	return old_msr;
-}
-
 int main(int argc, char **argv)
 {
 	struct arguments arguments;
@@ -142,10 +110,6 @@ int main(int argc, char **argv)
 	/* turn off Wake-on-Lan */
 	do_WOL();
 
-/*	
-	for (i = 0; i < sysconf(_SC_NPROCESSORS_ONLN); i++)
-		write_msr(i, 0, MSR_IA32_ENERGY_PERF_BIAS);
-*/
 	do_pci_pm();
 	do_gfx_pm();
 	verify_time();
