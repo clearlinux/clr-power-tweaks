@@ -38,43 +38,6 @@
 
 #include <clr_power.h>
 
-static void turn_off_wol(char *iface)
-{
-	int sock;
-	struct ifreq ifr;
-	struct ethtool_wolinfo wol;
-	int ret;
-
-	memset(&ifr, 0, sizeof(struct ifreq));
-
-	sock = socket(AF_INET, SOCK_DGRAM, 0);
-	if (sock<0)
-		return;
-
-	strcpy(ifr.ifr_name, iface);
-
-	/* Check if the interface is up */
-	ret = ioctl(sock, SIOCGIFFLAGS, &ifr);
-	if (ret<0) {
-		close(sock);
-                return;
-	}
-
-	memset(&wol, 0, sizeof(wol));
-
-	wol.cmd = ETHTOOL_GWOL;
-	ifr.ifr_data = (caddr_t)&wol;
-	ioctl(sock, SIOCETHTOOL, &ifr);
-
-
-        if (wol.wolopts) {
-	        wol.cmd = ETHTOOL_SWOL;
-	        wol.wolopts = 0;
-	        ioctl(sock, SIOCETHTOOL, &ifr);
-	}
-        close(sock);
-}
-
 static void maximize_queues(char *iface)
 {
 	int sock;
@@ -131,11 +94,9 @@ void do_WOL(void)
 		if (strcmp(entry->d_name, "lo") == 0)
 			continue;
 
-//		turn_off_wol(entry->d_name);
 		maximize_queues(entry->d_name);
 		
 	} while (1);
-
 
 	closedir(dir);
 }
