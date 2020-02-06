@@ -108,6 +108,9 @@ struct write_struct write_list[] = {
 	// Reload the microcode at boot
 	{"/sys/devices/system/cpu/microcode/reload", "1"},
 
+	{"/proc/sys/kernel/nmi_watchdog", "0"},
+	{"/sys/block/<disk>/queue/iosched/slice_idle", "0"},
+
 	// End of list.
 	{NULL, NULL}
 };
