@@ -38,6 +38,8 @@
 #include <fcntl.h>
 #include <clr_power.h>
 
+#include "data.h"
+
 
 const char *argp_program_version = "Clear Linux Project for Intel Architecture Power Tweaks v" VERSION;
 
@@ -112,19 +114,20 @@ static unsigned long long  write_msr(int cpu, unsigned long long new_msr, int of
 	return old_msr;
 }
 
-extern int generated_tweaks(void);
-
 int main(int argc, char **argv)
 {
 	struct arguments arguments;
-	int i;
+	int status = 0;
 
 	arguments.debug = false;
 	argp_parse (&argp, argc, argv, 0, 0, &arguments);
 
 	lib_init(arguments.debug);
 
-	int status = generated_tweaks();
+	for (int i = 0; write_list[i].pathglob != 0; i++) {
+		status |= write_string_to_files(write_list[i].pathglob,
+				write_list[i].string);
+	}
 
 	write_string_to_file("/proc/sys/kernel/nmi_watchdog", "0");
 	write_string_to_file("/sys/block/<disk>/queue/iosched/slice_idle", "0");
