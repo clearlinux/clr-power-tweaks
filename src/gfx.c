@@ -1,17 +1,17 @@
 /*
- *    Clear Linux Project for Intel Architecture Power tweaks 
+ *    Clear Linux Project for Intel Architecture Power tweaks
  *
  *      Copyright (C) 2012 Intel Corporation
  *
  *   This program is free software: you can redistribute it and/or modify
  *   it under the terms of the GNU General Public License as published by
  *   the Free Software Foundation, version 3 of the License.
- *  
+ *
  *   This program is distributed in the hope that it will be useful,
  *   but WITHOUT ANY WARRANTY; without even the implied warranty of
  *   MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
  *   GNU General Public License for more details.
- *   
+ *
  *   You should have received a copy of the GNU General Public License
  *   along with this program.  If not, see <http://www.gnu.org/licenses/>.
  *
@@ -39,7 +39,7 @@ void do_gfx_pm(void)
 	FILE *file;
 	char line[4096];
 	int i;
-	
+
 	/* trigger firmware load */
 	file = fopen("/sys/kernel/debug/dri/0/i915_dmc_info", "r");
 	if (!file)
@@ -58,12 +58,12 @@ void do_gfx_pm(void)
 	i = strtoull(line, NULL, 10);
 	if (i == 0)
 		return;
-	
+
 	i = i - 150;
 	file = fopen("/sys/kernel/debug/dri/0/i915_min_freq", "w");
 	if (!file)
 		return;
 	fprintf(file, "%i\n", i);
 	fclose(file);
-	
+
 }

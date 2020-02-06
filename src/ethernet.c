@@ -1,17 +1,17 @@
 /*
- *   Clear Linux Project for Intel Architecture Power tweaks 
+ *   Clear Linux Project for Intel Architecture Power tweaks
  *
  *      Copyright (C) 2012 Intel Corporation
  *
  *   This program is free software: you can redistribute it and/or modify
  *   it under the terms of the GNU General Public License as published by
  *   the Free Software Foundation, version 3 of the License.
- *  
+ *
  *   This program is distributed in the hope that it will be useful,
  *   but WITHOUT ANY WARRANTY; without even the implied warranty of
  *   MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
  *   GNU General Public License for more details.
- *   
+ *
  *   You should have received a copy of the GNU General Public License
  *   along with this program.  If not, see <http://www.gnu.org/licenses/>.
  *
@@ -66,10 +66,10 @@ static void maximize_queues(char *iface)
 	echannels.cmd = ETHTOOL_GCHANNELS;
 	ifr.ifr_data = (caddr_t)&echannels;
 	ret = ioctl(sock, SIOCETHTOOL, &ifr);
-	
+
         if (ret == 0 && echannels.combined_count < echannels.max_combined / 2 && echannels.max_combined > 0) {
-        	echannels.cmd = ETHTOOL_SCHANNELS;
-        	echannels.combined_count = echannels.max_combined;
+		echannels.cmd = ETHTOOL_SCHANNELS;
+		echannels.combined_count = echannels.max_combined;
 	        ioctl(sock, SIOCETHTOOL, &ifr);
 	}
         close(sock);
@@ -95,7 +95,7 @@ void do_WOL(void)
 			continue;
 
 		maximize_queues(entry->d_name);
-		
+
 	} while (1);
 
 	closedir(dir);

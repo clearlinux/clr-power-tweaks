@@ -1,17 +1,17 @@
 /*
- *    Clear Linux Project for Intel Architecture Power tweaks 
+ *    Clear Linux Project for Intel Architecture Power tweaks
  *
  *      Copyright (C) 2012 Intel Corporation
  *
  *   This program is free software: you can redistribute it and/or modify
  *   it under the terms of the GNU General Public License as published by
  *   the Free Software Foundation, version 3 of the License.
- *  
+ *
  *   This program is distributed in the hope that it will be useful,
  *   but WITHOUT ANY WARRANTY; without even the implied warranty of
  *   MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
  *   GNU General Public License for more details.
- *   
+ *
  *   You should have received a copy of the GNU General Public License
  *   along with this program.  If not, see <http://www.gnu.org/licenses/>.
  *
@@ -57,7 +57,7 @@ void do_usb_pm(void)
 			continue;
 		if (strcmp(entry->d_name, "..") == 0)
 			continue;
-		
+
 		if (asprintf(&filename, "/sys/bus/usb/devices/%s/idVendor", entry->d_name) < 0)
 			assert(0);
 
@@ -108,16 +108,16 @@ void do_usb_pm(void)
 		free(line);
 		free(filename);
 		fclose(file);
-		
+
 		//printf("Found USB device %04x:%04x  class %04x\n", vendor, device, class);
 		i = 0;
 		while (1) {
 			if (known_good[i].vendor == 0xFFFF)
 				break;
-			if ((known_good[i].vendor == vendor && known_good[i].device == device) || 
+			if ((known_good[i].vendor == vendor && known_good[i].device == device) ||
 			    (known_good[i].class == class && class != 0)) {
 				if (asprintf(&filename, "/sys/bus/usb/devices/%s/power/control", entry->d_name) < 0)
-                       		 	assert(0);
+					assert(0);
 				write_string_to_file(filename, "auto");
 				free(filename);
 			}

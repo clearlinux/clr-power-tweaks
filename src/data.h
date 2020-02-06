@@ -114,4 +114,3 @@ struct write_struct write_list[] = {
 	// End of list.
 	{NULL, NULL}
 };
-
