@@ -109,7 +109,7 @@ struct write_struct write_list[] = {
 	{"/sys/devices/system/cpu/microcode/reload", "1"},
 
 	{"/proc/sys/kernel/nmi_watchdog", "0"},
-	{"/sys/block/<disk>/queue/iosched/slice_idle", "0"},
+	{"/sys/block/{sd,mmc,nvme}*/queue/iosched/slice_idle", "0"},
 
 	// End of list.
 	{NULL, NULL}
