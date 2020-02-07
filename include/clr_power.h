@@ -17,6 +17,7 @@ struct usb_dev {
 extern void lib_init(const bool dbg);
 extern int write_string_to_file(const char *filename, const char *string);
 extern int write_string_to_files(const char *glob, const char *string);
+extern void string_exclude(const char *glob);
 extern void do_pci_pm(void);
 extern void do_WOL(void);
 extern void do_usb_pm(void);

@@ -92,6 +92,39 @@ int main(int argc, char **argv)
 
 	lib_init(arguments.debug);
 
+	/* user tweaks or overrides */
+	FILE *f = fopen("/etc/clr-power-tweaks.conf", "r");
+	if (f) {
+		for (;;) {
+			char match[PATH_MAX];
+			char value[PATH_MAX];
+			char line[PATH_MAX];
+			int ret;
+
+			if (fgets(line, PATH_MAX, f) == NULL)
+				break;
+
+			ret = sscanf(line, "%s %s", match, value);
+			if (ret >= 1) {
+				/* comment */
+				if ((strlen(match) > 0) && (match[0] == '#')) {
+					continue;
+				};
+			};
+			if (ret == 1) {
+				if (arguments.debug)
+					fprintf(stderr, "Adding \"%s\" to exclusion list\n", match);
+				string_exclude(match);
+			};
+			if (ret == 2) {
+				write_string_to_files(match, value);
+				string_exclude(match);
+			}
+		}
+		fclose(f);
+	}
+
+	/* system tweaks */
 	for (int i = 0; write_list[i].pathglob != 0; i++) {
 		status |= write_string_to_files(write_list[i].pathglob,
 				write_list[i].string);
