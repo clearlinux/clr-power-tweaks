@@ -5,10 +5,13 @@ clr_power_SOURCES = src/main.c src/lib.c src/pci.c src/ethernet.c src/usb.c src/
 AM_CPPFLAGS = -I$(top_srcdir)/include/
 ACLOCAL_AMFLAGS = -I m4 ${ACLOCAL_FLAGS}
 
-systemunitdir = $(SYSTEMD_SYSTEMUNITDIR)
-systemunit_DATA = clr-power.service clr-power.timer clr-power-rfkill.service
+systemdsystemunitdir = @SYSTEMD_SYSTEMUNITDIR@
+systemdsystemunit_DATA = clr-power.service clr-power.timer clr-power-rfkill.service
 
-EXTRA_DIST = $(systemunit_DATA) clr_power.1.md clr-power-tweaks.conf.5.md
+DISTCHECK_CONFIGURE_FLAGS = \
+		--with-systemdsystemunitdir=$(DESTDIR)$(SYSTEMDSYSTEMUNITDIR)
+
+EXTRA_DIST = $(systemdsystemunit_DATA) clr_power.1.md clr-power-tweaks.conf.5.md
 
 dist_man_MANS = clr_power.1 clr-power-tweaks.conf.5
 
