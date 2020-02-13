@@ -13,13 +13,13 @@ DISTCHECK_CONFIGURE_FLAGS = \
 
 EXTRA_DIST = $(systemdsystemunit_DATA) clr_power.1.md clr-power-tweaks.conf.5.md
 
-dist_man_MANS = clr_power.1 clr-power-tweaks.conf.5
+dist_man_MANS = man/clr_power.1 man/clr-power-tweaks.conf.5
 
-docs: clr_power.1 clr-power-tweaks.conf.5
+docs: man/clr_power.1 man/clr-power-tweaks.conf.5
 
-clr_power.1: clr_power.1.md
+man/clr_power.1: man/clr_power.1.md
 	ronn -r $< --pipe > $@
 
-clr-power-tweaks.conf.5: clr-power-tweaks.conf.5.md
+man/clr-power-tweaks.conf.5: man/clr-power-tweaks.conf.5.md
 	ronn -r $< --pipe > $@
 
