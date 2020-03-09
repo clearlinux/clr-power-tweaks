@@ -22,14 +22,14 @@ AC_PROG_RANLIB
 # Checks for libraries.
 
 # Checks for header files.
-AC_CHECK_HEADERS([fcntl.h stdlib.h string.h sys/ioctl.h sys/socket.h unistd.h])
+AC_CHECK_HEADERS([fcntl.h stdlib.h string.h sys/ioctl.h sys/socket.h unistd.h time.h argp.h glob.h])
 
 # Checks for typedefs, structures, and compiler characteristics.
 AC_CHECK_HEADER_STDBOOL
 AC_TYPE_SIZE_T
 
 # Checks for library functions.
-AC_CHECK_FUNCS([memset socket stime strdup strerror strtoul strtoull])
+AC_CHECK_FUNCS([memset socket strdup strerror strtoul strtoull clock_gettime])
 
 
 AC_CONFIG_HEADERS([config.h])
