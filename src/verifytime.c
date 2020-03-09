@@ -71,7 +71,11 @@ static unsigned long int get_versionstamp(void)
 
 static bool set_time(time_t mtime)
 {
-	if (stime(&mtime) != 0) {
+	struct timespec tp;
+	tp.tv_sec = mtime;
+	tp.tv_nsec = 0;
+
+	if (clock_settime(CLOCK_REALTIME, &tp) != 0) {
 		fprintf(stderr, "Failed to set system time");
 		return false;
 	}
