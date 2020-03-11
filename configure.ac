@@ -29,7 +29,7 @@ AC_CHECK_HEADER_STDBOOL
 AC_TYPE_SIZE_T
 
 # Checks for library functions.
-AC_CHECK_FUNCS([memset socket strdup strerror strtoul strtoull clock_gettime])
+AC_CHECK_FUNCS([memset socket strstr strdup strerror strtoul strtoull clock_gettime])
 
 
 AC_CONFIG_HEADERS([config.h])

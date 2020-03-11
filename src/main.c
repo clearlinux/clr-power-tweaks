@@ -51,6 +51,7 @@ const char args_doc[] = "";
 
 static struct argp_option options[] = {
 	{ "debug", 'd', 0, OPTION_ARG_OPTIONAL, "Display debug/verbose output" },
+	{ "desktop", 'D', 0, OPTION_ARG_OPTIONAL, "Treat system as a desktop platform" },
 	{ 0 },
 };
 
@@ -58,6 +59,7 @@ struct arguments
 {
 	char *args[1];
 	bool debug;
+	bool desktop;
 };
 
 static error_t parse_opt(int key, char *arg, struct argp_state *state)
@@ -68,6 +70,8 @@ static error_t parse_opt(int key, char *arg, struct argp_state *state)
 	case 'd':
 		arguments->debug = true;
 		break;
+	case 'D':
+		arguments->desktop = true;
 	case ARGP_KEY_ARG:
 		if (state->arg_num > 0)
 			argp_usage(state);
@@ -86,9 +90,16 @@ int main(int argc, char **argv)
 {
 	struct arguments arguments;
 	int status = 0;
+	int system_is_server;
 
 	arguments.debug = false;
+	arguments.desktop = false;
 	argp_parse (&argp, argc, argv, 0, 0, &arguments);
+
+	if (arguments.desktop)
+		system_is_server = -1.;
+	else
+		system_is_server = is_server();
 
 	lib_init(arguments.debug);
 
@@ -126,8 +137,15 @@ int main(int argc, char **argv)
 
 	/* system tweaks */
 	for (int i = 0; write_list[i].pathglob != 0; i++) {
-		status |= write_string_to_files(write_list[i].pathglob,
-				write_list[i].string);
+		/*
+		 * If it's a server, or we don't know, apply generic settings as well as server ones.
+		 * If it's a desktop, apply only desktop settings
+		 */
+		if (((system_is_server >= 0) && (write_list[i].where >= 0)) ||
+		    ((system_is_server == -1) && (write_list[i].where == -1))) {
+			status |= write_string_to_files(write_list[i].pathglob,
+					write_list[i].string);
+		}
 	}
 
 //	usleep(150000);
