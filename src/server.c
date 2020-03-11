@@ -43,7 +43,7 @@ int is_server(void)
 	char buffer[8192];
 	if (__builtin_cpu_is("intel") <= 0)
 		return 0;
-	
+
 	file = fopen("/proc/cpuinfo", "r");
 	if (!file)
 		return 0;
@@ -55,9 +55,15 @@ int is_server(void)
 			break;
 		if (strstr(buffer, "model name")) {
 			if (strstr(buffer, "Xeon"))
-				ret = 1;		
-			if (strstr(buffer, "Core(TM)"))
-				ret = -1;		
+				ret = 1;
+			else if ((strstr(buffer, "Core(TM)")) ||
+			    (strstr(buffer, "Celeron")) ||
+			    (strstr(buffer, "Pentium")))
+				ret = -1;
+			/*
+			 * Atom - neutral for now, some Atom SoC's are client, but there are
+			 * also Atom based servers.
+			 */
 		}
 	}
 	fclose(file);
