@@ -57,10 +57,13 @@ int is_server(void)
 			if (strstr(buffer, "Xeon"))
 				ret = 1;
 			else if ((strstr(buffer, "Core(TM)")) ||
-			    (strstr(buffer, "Atom")) ||
 			    (strstr(buffer, "Celeron")) ||
 			    (strstr(buffer, "Pentium")))
 				ret = -1;
+			/*
+			 * Atom - neutral for now, some Atom SoC's are client, but there are
+			 * also Atom based servers.
+			 */
 		}
 	}
 	fclose(file);

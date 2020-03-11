@@ -26,18 +26,16 @@
 #pragma once
 
 /*
- * For settings, the `where` field should normally be '0'.
- * systems are assumed to be a server. If you need to specify
- * a setting for desktop only, use '1'.
- * If you need to have an alternate setting for server and desktop,
- * make 2 entries with '1' and '-1'.
+ * For settings, the `where` field should normally be '0' - assume server
+ * If you need to specify a setting for desktop only, use '-1'.
+ * For servers, prefer '0' but use '1' if there's a desktop-alternate value.
  * You shouldn't have 2 entries where '0' is used as a value for `where`.
  */
 
 struct write_struct {
 	char *pathglob;
 	char *string;
-	int where; // -1 client, 1 server, 0 assume server, but we don't know
+	int where; // -1 client, 0 neutral (assume server), 1 server only
 };
 
 struct write_struct write_list[] = {
