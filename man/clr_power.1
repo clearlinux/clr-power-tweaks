@@ -1,0 +1,56 @@
+.\" generated with Ronn/v0.7.3
+.\" http://github.com/rtomayko/ronn/tree/0.7.3
+.
+.TH "CLR_POWER" "1" "March 2020" "" ""
+.
+.SH "NAME"
+\fBclr_power\fR
+.
+.SH "SYNOPSIS"
+\fB\fBclr_power\fR\fR is a utility to adjust power and performance settings in the operating system\. It is configurable and can enforce power and performance policies\.
+.
+.P
+\fBclr_power\fR [\fB\-d\fR|\fB\-\-debug\fR]
+.
+.SH "DESCRIPTION"
+\fB\fBclr_power\fR\fR adjusts power and performance in the operating system by setting runtime kernel and device parameters in the proc(5) filesystem\. \fB\fBclr_power\fR\fR operates with built\-in default values\. Values can be added or changed in user\-defined \fBclr\-power\-tweaks\.conf(5)\fR file\.
+.
+.P
+\fB\fBclr_power\fR\fR applies settings and immediately exits after it is started\. It can act as a daemon that enforces settings with the included systemd files\.
+.
+.P
+The program handles server and desktop\-like systems differently and will set values based on whether a system is a server platform or a desktop platform\. Most systems will be assumed a server, and if it can\'t be determined what type of platform the system is, treated as a server platform\. By default, systems with CPU\'s that identify as \fBCore(TM)\fR, \fBCeleron\fR and \fBPentium\fR are treated as desktop systems, and systems with CPU\'s that identify as \fBXeon\fR are treated as server systems\.
+.
+.P
+Tunings applied will vary per system\. To see what tunings are applied, run the program with the \fB\-\-debug\fR option\.
+.
+.SH "OPTIONS"
+\fB\-d\fR, \fB\-\-debug\fR Display debug/verbose output including built\-in values\.
+.
+.P
+\fB\-S\fR, \fB\-\-server\fR Treat the system as a server, and apply server specific tunings\.
+.
+.P
+\fB\-D\fR, \fB\-\-desktop\fR Treat the system as a desktop, and apply desktop specific tunings
+.
+.SH "FILES"
+.
+.IP "\(bu" 4
+\fIclr\-power\.service\fR systemd service unit that executes \fBclr_power\fR\.
+.
+.IP "\(bu" 4
+\fIclr\-power\.timer\fR systemd timer that periodically executes the \fIclr\-power\.service\fR to enforce settings\.
+.
+.IP "\(bu" 4
+\fIclr\-power\-rfkill\.service\fR systemd service that stops bluetooth devices at boot to prevent power drain\.
+.
+.IP "\(bu" 4
+\fI/etc/clr\-power\-tweaks\.conf\fR Optional user\-defined configuration file to override or att values\. See clr\-power\-tweaks\.conf(5) for more information\.
+.
+.IP "" 0
+.
+.SH "BUGS"
+See GitHub Issues: \fIhttps://github\.com/clearlinux/clr\-power\-tweaks/issues\fR
+.
+.SH "SEE ALSO"
+\fBclr\-power\-tweaks\.conf(5)\fR, \fBproc(5)\fR

@@ -1,0 +1,96 @@
+.\" generated with Ronn/v0.7.3
+.\" http://github.com/rtomayko/ronn/tree/0.7.3
+.
+.TH "CLR\-POWER\-TWEAKS" "5" "March 2020" "" ""
+.
+.SH "NAME"
+\fBclr\-power\-tweaks\fR
+.
+.SH "SYNOPSIS"
+\fB\fBclr\-power\-tweaks\.conf\fR\fR is an optional configuration file for the clr_power(1) utility\.
+.
+.P
+\fB/etc/clr\-power\-tweaks\.conf\fR
+.
+.SH "DESCRIPTION"
+\fB\fBclr\-power\-tweaks\.conf\fR\fR is an optional configuration file for the clr_power(1) utility\. The configuration file contains kernel and device parameter values used by the clr_power(1) utility\.
+.
+.P
+Configuration parameter values placed in \fB\fBclr\-power\-tweaks\.conf\fR\fR will supersede the built\-in defaults configured by clr_power(1)\. New parameters can be added to the configuration to supplement the built\-in values\. Built\-in parameters can be changed by defining them in \fB\fBclr\-power\-tweaks\.conf\fR\fR with a different value\. Parameters can be excluded from being modified by clr_power(1) by adding them in \fB\fBclr\-power\-tweaks\.conf\fR\fR without a value\.
+.
+.SH "FILE FORMAT"
+\fB\fBclr\-power\-tweaks\.conf\fR\fR uses a key\-value pairs to define parameter values\.
+.
+.P
+Each line contains one parameter\-value pair, delimited by a space character\.
+.
+.P
+Parameters are paths from the proc(5) filesystem\. Parameters paths can include glob(n) wildcards to match multiple paths\.
+.
+.P
+Acceptable values are determined by the parameter being set\. Any parameter listed in the configuration file without a value will be excluded by clr_power(1) and the parameter will inherit the kernel\'s built\-in default parameter value\.
+.
+.SH "EXAMPLES"
+.
+.IP "1." 4
+\fB\fBclr\-power\-tweaks\.conf\fR\fR entry to override the default value in clr_power(1) for CPU governor with \fBpowersave\fR\. All other values built\-in to clr_power(1) would still get applied\.
+.
+.IP
+Note the globbing used with \fB*\fR to target all CPU cores\.
+.
+.IP "" 4
+.
+.nf
+
+/sys/devices/system/cpu/cpu*/cpufreq/scaling_governor powersave
+.
+.fi
+.
+.IP "" 0
+
+.
+.IP "2." 4
+\fB\fBclr\-power\-tweaks\.conf\fR\fR entry to exclude a parameter causing it to use the kernel\'s built\-in default value (60)\. All other values built\-in to clr_power(1) would still get applied\.
+.
+.IP
+Note the omission of a value\.
+.
+.IP "" 4
+.
+.nf
+
+/proc/sys/vm/swappiness
+.
+.fi
+.
+.IP "" 0
+
+.
+.IP "3." 4
+\fB\fBclr\-power\-tweaks\.conf\fR\fR entry to add two new parameters to increase UDP buffers All other values built\-in to clr_power(1) would still get applied\.
+.
+.IP "" 4
+.
+.nf
+
+/proc/sys/net/ipv4/udp_rmem_min 8192
+/proc/sys/net/ipv4/udp_wmem_min 8192
+.
+.fi
+.
+.IP "" 0
+
+.
+.IP "" 0
+.
+.SH "BUGS"
+The default clr\-power\-tweaks\.conf(5) aims to have reasonable defaults for achieving power and performance efficiency\. Default values may not be optimal for all systems and environments\.
+.
+.P
+See GitHub Issues: \fIhttps://github\.com/clearlinux/clr\-power\-tweaks/issues\fR
+.
+.SH "SEE ALSO"
+\fBclr_power\.conf(5)\fR, \fBproc(5)\fR, \fBsysctl(2)\fR
+.
+.P
+For parameters understood by the kernel, please see https://www\.kernel\.org/doc/html/latest/admin\-guide/kernel\-parameters\.html
