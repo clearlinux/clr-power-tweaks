@@ -1,8 +1,8 @@
 #                                               -*- Autoconf -*-
 # Process this file with autoconf to produce a configure script.
 
-AC_PREREQ([2.66])
-AC_INIT([clr-power-tweaks], [207], [dev@lists.clearlinux.org])
+AC_PREREQ([2.69])
+AC_INIT([clr-power-tweaks],[207],[dev@lists.clearlinux.org])
 AM_INIT_AUTOMAKE([foreign -Wall -Wextra-portability subdir-objects])
 AM_SILENT_RULES([yes])
 AC_CONFIG_MACRO_DIRS([m4])
@@ -36,8 +36,7 @@ AC_CONFIG_HEADERS([config.h])
 
 PKG_CHECK_MODULES([SYSTEMD], [systemd])
 
-AC_ARG_WITH([systemdsystemunitdir], AC_HELP_STRING([--with-systemdsystemunitdir=DIR],
-	[path to systemd system service directory]), [path_systemdsystemunit=${withval}],
+AC_ARG_WITH([systemdsystemunitdir], AS_HELP_STRING([--with-systemdsystemunitdir=DIR],[path to systemd system service directory]), [path_systemdsystemunit=${withval}],
 	[path_systemdsystemunit="`$PKG_CONFIG --variable=systemdsystemunitdir systemd`"])
 if (test -n "${path_systemdsystemunit}"); then
 SYSTEMD_SYSTEMUNITDIR="${path_systemdsystemunit}"
