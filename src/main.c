@@ -102,11 +102,6 @@ int main(int argc, char **argv)
 
 	argp_parse (&argp, argc, argv, 0, 0, &arguments);
 
-	if (arguments.desktop)
-		system_is_server = -1.;
-	else
-		system_is_server = is_server();
-
 	lib_init(arguments.debug);
 
 	/* user tweaks or overrides */
