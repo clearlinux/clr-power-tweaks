@@ -11,7 +11,7 @@ systemdsystemunit_DATA = clr-power.service clr-power.timer clr-power-rfkill.serv
 DISTCHECK_CONFIGURE_FLAGS = \
 		--with-systemdsystemunitdir=$(DESTDIR)$(SYSTEMDSYSTEMUNITDIR)
 
-EXTRA_DIST = $(systemdsystemunit_DATA) clr_power.1.md clr-power-tweaks.conf.5.md
+EXTRA_DIST = $(systemdsystemunit_DATA) man/clr_power.1.md man/clr-power-tweaks.conf.5.md
 
 dist_man_MANS = man/clr_power.1 man/clr-power-tweaks.conf.5
 
