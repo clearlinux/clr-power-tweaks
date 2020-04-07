@@ -72,6 +72,11 @@ struct write_struct write_list[] = {
 	// Ability of tasks being woken to preempt the current task
 	{"/proc/sys/kernel/sched_wakeup_granularity_ns", "15000000", 0},
 
+	// sched_autogroup would improve interactive desktop performance in the face of
+	// multi‐ process, CPU-intensive workloads. Whereas it would harm performance,
+	// thus disable it on Server
+	{"/proc/sys/kernel/sched_autogroup_enabled", "0", 1},
+
 	// audio pm
 	{"/sys/module/snd_hda_intel/parameters/power_save", "1", 0},
 
