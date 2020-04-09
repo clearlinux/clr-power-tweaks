@@ -62,7 +62,6 @@ struct write_struct write_list[] = {
 	{"/sys/kernel/mm/ksm/pages_to_scan", "1000", 0},
 	{"/proc/sys/net/core/rmem_max", "1703936", 0},
 	{"/proc/sys/net/core/wmem_max", "1703936", 0},
-	{"/proc/sys/net/core/somaxconn", "512", 0},
 
 	// This tuneable decides the minimum time a task will be be allowed to
 	// run on CPU before being pre-empted out
