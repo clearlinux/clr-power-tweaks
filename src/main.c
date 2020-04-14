@@ -143,7 +143,7 @@ int main(int argc, char **argv)
 		 * If it's a desktop, apply only desktop settings
 		 */
 		if (((arguments.server_desktop >= 0) && (write_list[i].where >= 0)) ||
-		    ((arguments.server_desktop == -1) && (write_list[i].where == -1))) {
+		    ((arguments.server_desktop == -1) && (write_list[i].where <= 0))) {
 			status |= write_string_to_files(write_list[i].pathglob,
 					write_list[i].string);
 		}
