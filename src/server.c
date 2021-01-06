@@ -54,11 +54,14 @@ int is_server(void)
 		if (c == NULL)
 			break;
 		if (strstr(buffer, "model name")) {
-			if (strstr(buffer, "Xeon"))
+			if (strstr(buffer, "Xeon")) ||
+			    (strstr(buffer, "EPYC")))
 				ret = 1;
 			else if ((strstr(buffer, "Core(TM)")) ||
 			    (strstr(buffer, "Celeron")) ||
-			    (strstr(buffer, "Pentium")))
+			    (strstr(buffer, "Pentium")) ||
+			    (strstr(buffer, "Ryzen")) ||
+			    (strstr(buffer, "Athlon")))
 				ret = -1;
 			/*
 			 * Atom - neutral for now, some Atom SoC's are client, but there are
