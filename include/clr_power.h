@@ -3,6 +3,8 @@
 #ifndef __INCLUDE_GUARD_CLR_POWER_H__
 #define __INCLUDE_GUARD_CLR_POWER_H__
 
+#define KERNEL_VERSION(a,b,c) (((a) << 16) + ((b) << 8) + (c))
+
 struct pci_ids {
 	unsigned int vendor;
 	unsigned int device;

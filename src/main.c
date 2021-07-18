@@ -37,6 +37,7 @@
 #include <sys/stat.h>
 #include <fcntl.h>
 #include <clr_power.h>
+#include <sys/utsname.h>
 
 #include "data.h"
 
@@ -91,6 +92,25 @@ static error_t parse_opt(int key, char *arg, struct argp_state *state)
 
 static struct argp argp = { options, parse_opt, args_doc, doc };
 
+static int get_kernel_version(void)
+{
+	struct utsname version;
+	char *p;
+	int r;
+
+	uname(&version);
+	p = version.release - 1;
+	r = 1;
+	do {
+		r <<= 8;
+		if (p) {
+			r += atoi(++p);
+			p = strchr(p, '.');
+		}
+	} while (r < 0x1000000);
+	return r - 0x1000000;
+}
+
 int main(int argc, char **argv)
 {
 	struct arguments arguments;
@@ -142,11 +162,14 @@ int main(int argc, char **argv)
 		 * If it's a server, or we don't know, apply generic settings as well as server ones.
 		 * If it's a desktop, apply only desktop settings
 		 */
-		if (((arguments.server_desktop >= 0) && (write_list[i].where >= 0)) ||
-		    ((arguments.server_desktop == -1) && (write_list[i].where <= 0))) {
-			status |= write_string_to_files(write_list[i].pathglob,
-					write_list[i].string);
-		}
+		if (((arguments.server_desktop >= 0) && (write_list[i].where >= 0) &&
+			(get_kernel_version() >= write_list[i].min_kernel_version) &&
+			(get_kernel_version() < write_list[i].max_kernel_version)) ||
+			((arguments.server_desktop == -1) && (write_list[i].where <= 0) &&
+			(get_kernel_version() >= write_list[i].min_kernel_version) &&
+			(get_kernel_version() < write_list[i].max_kernel_version))) {
+			status |= write_string_to_files(write_list[i].pathglob, write_list[i].string);
+			}
 	}
 
 //	usleep(150000);
