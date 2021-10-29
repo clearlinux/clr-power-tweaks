@@ -68,7 +68,7 @@ static void set_governor(const char *gov)
 
 void do_cpu_pm(void)
 {
-	if (is_server()) {
+	if (is_server() >= 0) {
 		set_governor("performance");	
 	} else {
 		set_governor("powersave");	

@@ -54,7 +54,7 @@ int is_server(void)
 		if (c == NULL)
 			break;
 		if (strstr(buffer, "model name")) {
-			if (strstr(buffer, "Xeon"))
+			if (strstr(buffer, "Xeon") || strstr(buffer, "Core(TM) i9"))
 				ret = 1;
 			else if ((strstr(buffer, "Core(TM)")) ||
 			    (strstr(buffer, "Celeron")) ||
