@@ -161,6 +161,7 @@ int main(int argc, char **argv)
 
 	do_pci_pm();
 	do_gfx_pm();
+	do_cpu_pm();
 	verify_time();
 
 	return EXIT_SUCCESS;

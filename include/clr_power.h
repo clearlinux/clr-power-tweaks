@@ -22,6 +22,7 @@ extern void do_pci_pm(void);
 extern void do_WOL(void);
 extern void do_usb_pm(void);
 extern void do_gfx_pm(void);
+extern void do_cpu_pm(void);
 extern void verify_time(void);
 extern int is_server(void);
 #endif
