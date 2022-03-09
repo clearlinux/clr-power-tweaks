@@ -41,7 +41,7 @@ void do_zero_pages(void)
 		return;
 
 	if (nice(16))
-		return;
+		printf("Nice failed\n");
 	while (1) {
 		sleep(5);
 		file = fopen("/proc/sys/vm/zero_pages", "w");
