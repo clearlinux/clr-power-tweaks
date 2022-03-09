@@ -37,14 +37,14 @@
 void do_zero_pages(void)
 {
 	FILE *file;
-	if (access("/proc/sys/kernel/mm/zero_pages", W_OK))
+	if (access("/proc/sys/kernel/vm/zero_pages", W_OK))
 		return;
 
 	if (nice(16))
 		return;
 	while (1) {
 		sleep(5);
-		file = fopen("/proc/sys/kernel/mm/zero_pages", "w");
+		file = fopen("/proc/sys/vm/zero_pages", "w");
 		if (!file)
 			return;
 		fprintf(file, "%i\n", 5000);
