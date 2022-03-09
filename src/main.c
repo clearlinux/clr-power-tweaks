@@ -164,5 +164,8 @@ int main(int argc, char **argv)
 	do_cpu_pm();
 	verify_time();
 
+
+	/* do zero pages will loop and do work every 5 seconds, so it must be last */
+	do_zero_pages();
 	return EXIT_SUCCESS;
 }
