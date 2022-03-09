@@ -37,7 +37,7 @@
 void do_zero_pages(void)
 {
 	FILE *file;
-	if (access("/proc/sys/kernel/vm/zero_pages", W_OK))
+	if (access("/proc/sys/vm/zero_pages", W_OK))
 		return;
 
 	if (nice(16))
