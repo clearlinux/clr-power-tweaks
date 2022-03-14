@@ -104,6 +104,34 @@ int main(int argc, char **argv)
 
 	lib_init(arguments.debug);
 
+	/* system tweaks */
+	for (int i = 0; write_list[i].pathglob != 0; i++) {
+		/*
+		 * If it's a server, or we don't know, apply generic settings as well as server ones.
+		 * If it's a desktop, apply only desktop settings
+		 */
+		if (((arguments.server_desktop >= 0) && (write_list[i].where >= 0)) ||
+		    ((arguments.server_desktop == -1) && (write_list[i].where <= 0))) {
+			status |= write_string_to_files(write_list[i].pathglob,
+					write_list[i].string);
+		}
+	}
+
+//	usleep(150000);
+
+	/* USB autosuspend for non-HID */
+
+	/* Runtime PM for PCI */
+	do_usb_pm();
+
+	/* turn off Wake-on-Lan */
+	do_WOL();
+
+	do_pci_pm();
+	do_gfx_pm();
+	do_cpu_pm();
+	verify_time();
+
 	/* user tweaks or overrides */
 	FILE *f = fopen("/etc/clr-power-tweaks.conf", "r");
 	if (f) {
@@ -135,35 +163,6 @@ int main(int argc, char **argv)
 		}
 		fclose(f);
 	}
-
-	/* system tweaks */
-	for (int i = 0; write_list[i].pathglob != 0; i++) {
-		/*
-		 * If it's a server, or we don't know, apply generic settings as well as server ones.
-		 * If it's a desktop, apply only desktop settings
-		 */
-		if (((arguments.server_desktop >= 0) && (write_list[i].where >= 0)) ||
-		    ((arguments.server_desktop == -1) && (write_list[i].where <= 0))) {
-			status |= write_string_to_files(write_list[i].pathglob,
-					write_list[i].string);
-		}
-	}
-
-//	usleep(150000);
-
-	/* USB autosuspend for non-HID */
-
-	/* Runtime PM for PCI */
-	do_usb_pm();
-
-	/* turn off Wake-on-Lan */
-	do_WOL();
-
-	do_pci_pm();
-	do_gfx_pm();
-	do_cpu_pm();
-	verify_time();
-
 
 	/* do zero pages will loop and do work every 5 seconds, so it must be last */
 	do_zero_pages();
