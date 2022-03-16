@@ -37,16 +37,18 @@
 void do_zero_pages(void)
 {
 	FILE *file;
-	if (access("/proc/sys/vm/zero_pages", W_OK))
-		return;
 
 	if (nice(16))
-		printf("Nice failed\n");
+		printf("");
 	while (1) {
 		sleep(5);
+		if (access("/proc/sys/vm/zero_pages", W_OK)) {
+			sleep(90000);
+			continue;
+		}
 		file = fopen("/proc/sys/vm/zero_pages", "w");
 		if (!file)
-			return;
+			continue;
 		fprintf(file, "%i\n", 5000);
 		fclose(file);
 	}
