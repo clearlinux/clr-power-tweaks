@@ -107,7 +107,7 @@ struct write_struct write_list[] = {
 
 	// Performance tuning for SATA and NVME storage
 	{"/sys/block/sd*/queue/scheduler", "bfq", 0},
-	{"/sys/block/sd*/queue/nr_requests", "1024", 0},
+	{"/sys/block/sd*/queue/nr_requests", "4096", 0},
 	{"/sys/block/sd*/queue/read_ahead_kb", "1024", 0},
 	{"/sys/block/sd*/queue/add_random", "1", 0},
 
@@ -119,7 +119,7 @@ struct write_struct write_list[] = {
 	{"/sys/block/nvme*/queue/iosched/low_latency", "1", -1},
 
 	{"/sys/block/nvme*/queue/nr_requests", "2048", 0},
-	{"/sys/block/nvme*/queue/read_ahead_kb", "256", 0},
+	{"/sys/block/nvme*/queue/read_ahead_kb", "1024", 0},
 	{"/sys/block/nvme*/queue/add_random", "1", 0},
 
 	// Enable turbo mode max
