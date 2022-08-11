@@ -165,6 +165,6 @@ int main(int argc, char **argv)
 	}
 
 	/* do zero pages will loop and do work every 5 seconds, so it must be last */
-	do_zero_pages();
+//	do_zero_pages();
 	return EXIT_SUCCESS;
 }

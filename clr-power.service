@@ -4,5 +4,5 @@ After=sysinit.target
 ConditionVirtualization=!container
 
 [Service]
-Type=simple
+Type=oneshot
 ExecStart=/usr/bin/clr_power
