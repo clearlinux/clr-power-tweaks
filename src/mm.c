@@ -39,7 +39,7 @@ void do_zero_pages(void)
 	FILE *file;
 
 	if (nice(16))
-		printf("");
+		usleep(0);
 	while (1) {
 		sleep(5);
 		if (access("/proc/sys/vm/zero_pages", W_OK)) {
