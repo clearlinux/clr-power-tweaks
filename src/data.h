@@ -116,6 +116,7 @@ struct write_struct write_list[] = {
 
 	// For desktop, prefer bfq low_latency
 	{"/sys/block/nvme*/queue/scheduler", "bfq", -1},
+	{"/sys/block/nvme*/queue/iosched/low_latency", "0", 1},
 	{"/sys/block/nvme*/queue/iosched/low_latency", "1", -1},
 
 	{"/sys/block/nvme*/queue/nr_requests", "2048", 0},
