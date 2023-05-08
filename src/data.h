@@ -132,6 +132,10 @@ struct write_struct write_list[] = {
 
 	{"/proc/sys/kernel/nmi_watchdog", "0", 0},
 	{"/sys/block/{sd,mmc,nvme, 0}*/queue/iosched/slice_idle", "0"},
+	
+	// SPR uncore
+	{"/sys/devices/system/cpu/intel_uncore_frequency/package_00_die_00/max_freq_khz", "2300000"},
+	{"/sys/devices/system/cpu/intel_uncore_frequency/package_01_die_00/max_freq_khz", "2300000"},
 
 	// End of list.
 	{NULL, NULL, 0}
