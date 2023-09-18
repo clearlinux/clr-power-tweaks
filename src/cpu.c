@@ -72,5 +72,6 @@ void do_cpu_pm(void)
 		set_governor("performance");	
 	} else {
 		set_governor("powersave");	
+		set_governor("schedutil");
 	}
 }
