@@ -100,9 +100,11 @@ struct write_struct write_list[] = {
 	{"/proc/sys/net/ipv4/conf/default/secure_redirects", "0", 0},
 
 	{"/proc/sys/net/ipv4/tcp_slow_start_after_idle", "0", 0},
+
+/* breaks r8169 in 6.6 kernels
 	{"/proc/sys/net/core/busy_poll", "50", 0},
 	{"/proc/sys/net/core/busy_read", "50", 0},
-
+*/
 
 	// SATA link power management
 	{"/sys/class/scsi_host/*/link_power_management_policy", "med_power_with_dipm", 0},
