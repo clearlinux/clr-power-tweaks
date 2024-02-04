@@ -141,6 +141,9 @@ struct write_struct write_list[] = {
 	{"/sys/devices/system/cpu/intel_uncore_frequency/package_00_die_00/max_freq_khz", "2300000"},
 	{"/sys/devices/system/cpu/intel_uncore_frequency/package_01_die_00/max_freq_khz", "2300000"},
 
+	// client gui interactivity
+	{"/proc/sys/kernel/sched_autogroup_enabled", "1", -1},
+
 	// End of list.
 	{NULL, NULL, 0}
 };
