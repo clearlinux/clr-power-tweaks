@@ -55,23 +55,23 @@ static void read_pm_profile(void)
 /* see Documentation/ABI/stable/sysfs-acpi-pmprofile for the decoder info */
 static int is_server_from_pm_profile(void)
 {
-	if (pm_profile == '0')
+	if (pm_profile == '0')  // 0  Unspecified
 		return DONTKNOW;
-	if (pm_profile == '1')
+	if (pm_profile == '1')  // 1  Desktop
 		return IS_CLIENT;
-	if (pm_profile == '2')
+	if (pm_profile == '2')  // 2  Mobile
 		return IS_CLIENT;
-	if (pm_profile == '3')
+	if (pm_profile == '3')  // 3  Workstation
 		return IS_SERVER;
-	if (pm_profile == '4')
+	if (pm_profile == '4')  // 4  Enterprise Server
 		return IS_SERVER;
-	if (pm_profile == '5')
+	if (pm_profile == '5')  // 5  SOHO Server
 		return IS_SERVER;
-	if (pm_profile == '6')
+	if (pm_profile == '6')  // 6  Appliance PC
 		return DONTKNOW;
-	if (pm_profile == '7')
+	if (pm_profile == '7')  // 7  Performance Server
 		return IS_SERVER;
-	if (pm_profile == '8')
+	if (pm_profile == '8')  // 8  Tablet
 		return IS_CLIENT;
 	
 	return 0;
