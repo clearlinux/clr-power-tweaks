@@ -32,6 +32,10 @@
 #include <sys/types.h>
 #include <dirent.h>
 
+#define IS_CLIENT -1
+#define IS_SERVER 1
+#define DONTKNOW 0
+
 static char pm_profile;
 
 static void read_pm_profile(void)
@@ -52,23 +56,23 @@ static void read_pm_profile(void)
 static int is_server_from_pm_profile(void)
 {
 	if (pm_profile == '0')
-		return 0;
+		return DONTKNOW;
 	if (pm_profile == '1')
-		return -1;
+		return IS_CLIENT;
 	if (pm_profile == '2')
-		return -1;
+		return IS_CLIENT;
 	if (pm_profile == '3')
-		return 1;
+		return IS_SERVER;
 	if (pm_profile == '4')
-		return 1;
+		return IS_SERVER;
 	if (pm_profile == '5')
-		return 1;
+		return IS_SERVER;
 	if (pm_profile == '6')
-		return 1;
+		return DONTKNOW;
 	if (pm_profile == '7')
-		return 1;
+		return IS_SERVER;
 	if (pm_profile == '8')
-		return -1;
+		return IS_CLIENT;
 	
 	return 0;
 }
