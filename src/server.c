@@ -54,7 +54,7 @@ static int is_server_from_pm_profile(void)
 	if (pm_profile == '0')
 		return 0;
 	if (pm_profile == '1')
-		return 1;
+		return -1;
 	if (pm_profile == '2')
 		return -1;
 	if (pm_profile == '3')
