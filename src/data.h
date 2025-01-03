@@ -63,11 +63,11 @@ struct write_struct write_list[] = {
 
 	// This tuneable decides the minimum time a task will be be allowed to
 	// run on CPU before being pre-empted out
-	{"/proc/sys/kernel/sched_min_granularity_ns", "2250000", 0},
-	{"/proc/sys/kernel/sched_migration_cost_ns", "50000", 0},
+//	{"/proc/sys/kernel/sched_min_granularity_ns", "2250000", 0},
+//	{"/proc/sys/kernel/sched_migration_cost_ns", "50000", 0},
 
 	// Ability of tasks being woken to preempt the current task
-	{"/proc/sys/kernel/sched_wakeup_granularity_ns", "15000000", 0},
+//	{"/proc/sys/kernel/sched_wakeup_granularity_ns", "15000000", 0},
 
 	// sched_autogroup would improve interactive desktop performance in the face of
 	// multi‐ process, CPU-intensive workloads. Whereas it would harm performance,
@@ -132,15 +132,11 @@ struct write_struct write_list[] = {
 
 	// Reload the microcode at boot
 	{"/sys/devices/system/cpu/microcode/reload", "1", 0},
-	{"/sys/devices/system/cpu/cpu0/power/energy_perf_bias", "performance", 0}, 
+	{"/sys/devices/system/cpu/cpu0/power/energy_perf_bias", "balance-performance", 0}, 
 
 	{"/proc/sys/kernel/nmi_watchdog", "0", 0},
 	{"/sys/block/{sd,mmc,nvme, 0}*/queue/iosched/slice_idle", "0"},
 	
-	// SPR uncore
-	{"/sys/devices/system/cpu/intel_uncore_frequency/package_00_die_00/max_freq_khz", "2300000"},
-	{"/sys/devices/system/cpu/intel_uncore_frequency/package_01_die_00/max_freq_khz", "2300000"},
-
 	// client gui interactivity
 	{"/proc/sys/kernel/sched_autogroup_enabled", "1", -1},
 
