@@ -134,6 +134,7 @@ struct write_struct write_list[] = {
 	{"/sys/devices/system/cpu/microcode/reload", "1", 0},
 	{"/sys/devices/system/cpu/cpu0/power/energy_perf_bias", "balance-performance", 0}, 
 	{"/sys/devices/system/cpu/cpu*/power/energy_perf_bias", "balance-performance", 0}, 
+	{"/sys/devices/system/cpu/cpu*/power/energy_perf_bias", "balance_performance", 0}, 
 
 	{"/proc/sys/kernel/nmi_watchdog", "0", 0},
 	{"/sys/block/{sd,mmc,nvme, 0}*/queue/iosched/slice_idle", "0"},
