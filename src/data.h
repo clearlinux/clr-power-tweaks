@@ -136,6 +136,7 @@ struct write_struct write_list[] = {
 	{"/sys/devices/system/cpu/cpu*/power/energy_perf_bias", "balance-performance", 0}, 
 	{"/sys/devices/system/cpu/cpufreq/policy*/energy_performance_preference", "balance_performance", 0}, 
 	{"/sys/devices/system/cpu/cpu*/cpufreq/energy_performance_preference", "balance_performance", 0}, 
+	{"/sys/devices/system/cpu/cpuidle/c1_demotion", "1", 0},
 
 
 	{"/proc/sys/kernel/nmi_watchdog", "0", 0},
